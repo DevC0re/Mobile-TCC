@@ -1,21 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import {Onbording} from "./screens/onbording";
 
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>TA FUNFANDO!</Text>
-      <StatusBar style="auto" />
-    </View>
+      <Onbording/>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
