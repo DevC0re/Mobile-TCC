@@ -1,7 +1,8 @@
-import {SafeAreaView} from "react-native-safe-area-context";
-import {View, Text, Image, TouchableOpacity} from "react-native";
+
+import {View, Text, TouchableOpacity} from "react-native";
 import {Conteiner, Main, Subtitle, Textconteiner, Title, WrapperText} from "./style";
 import Logo from "../../../components/logo";
+import LoadingDots from "../../../components/pagedots";
 
 
 
@@ -19,14 +20,15 @@ export const Welcome = () =>{
                         Bem-vindo ao MedUp!
                     </Subtitle>
                     <Textconteiner>
-                        Descubra hospitais próximos da sua localização e tenha
-                        acesso rápido às informações que você precisa para escolher o melhor atendimento.
+                        Encontre hospitais próximos à sua localização e
+                        tenha acesso rápido às informações necessárias para
+                        escolher a melhor opção de atendimento.
                     </Textconteiner>
                 </WrapperText>
 
 
                 <View>
-
+                    <LoadingDots/>
                 </View>
 
                 <TouchableOpacity>

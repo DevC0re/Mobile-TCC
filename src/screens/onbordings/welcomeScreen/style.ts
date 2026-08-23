@@ -6,16 +6,18 @@ import {SafeAreaView} from "react-native-safe-area-context";
 export const Main = styled(SafeAreaView)`
     flex: 1;
     background-color: ${theme.colors.teal};
-    padding: 80px 25px 60px 25px;
-  
+    justify-content: center;
 `
 export const Conteiner = styled(View)`
     
+    justify-content: center;
     align-items: center;
-    justify-content: space-between;
     gap: 70px;
-  
    
+    padding-top: 80px;
+    padding-bottom: 60px;
+    padding-left: 25px ;
+    padding-right: 25px ;
     
 `
 
@@ -39,8 +41,8 @@ export const Textconteiner = styled(Text)`
     font-family: ${theme.fonts.regular};
     font-size: 16px; 
     font-style: normal;
-    text-align: center;
     line-height: normal;
+    text-align: center;
     
     
 `
@@ -48,7 +50,7 @@ export const Textconteiner = styled(Text)`
 export const WrapperText = styled(View)`
     flex-direction: column;
     align-items: center;
-    justify-content: flex-end;
+   // justify-content: flex-end;
     gap: 10px;
    
     
