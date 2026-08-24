@@ -2,7 +2,7 @@
 import {View, Text, TouchableOpacity} from "react-native";
 import {Conteiner, Main, Subtitle, Textconteiner, Title, WrapperText} from "./style";
 import Logo from "../../../components/logo";
-import LoadingDots from "../../../components/pagedots";
+import {ButtonOnBordings} from "../../../components/buttonOnbordings";
 
 
 
@@ -28,12 +28,12 @@ export const Welcome = () =>{
 
 
                 <View>
-                    <LoadingDots/>
+
                 </View>
 
-                <TouchableOpacity>
-                    <Text>Comecar</Text>
-                </TouchableOpacity>
+                <ButtonOnBordings text={"Começar"} />
+
+
 
 
             </Conteiner>
