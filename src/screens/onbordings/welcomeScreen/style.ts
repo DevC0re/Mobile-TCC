@@ -3,6 +3,8 @@ import {theme} from "../../../style/theme";
 import {View, Text, Image, TouchableOpacity} from "react-native";
 import {SafeAreaView} from "react-native-safe-area-context";
 
+
+
 export const Main = styled(SafeAreaView)`
 
     background-color: ${theme.colors.teal};
@@ -10,13 +12,12 @@ export const Main = styled(SafeAreaView)`
 `
 export const Conteiner = styled(View)`
     height: 100%;
-    justify-content: center;
+    justify-content:space-between;
     align-items: center;
     padding-top: 40px;
     padding-bottom: 60px;
     padding-left: 25px ;
     padding-right: 25px ;
-    gap: 70px;
 `
 
 export const Title = styled(Text)`

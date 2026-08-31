@@ -1,9 +1,12 @@
 import {Welcome} from "./screens/onbordings/welcomeScreen";
 import {useFonts, Poppins_700Bold, Poppins_400Regular} from "@expo-google-fonts/poppins";
 import {Features} from "./screens/onbordings/featuresScreen";
-import {PixelRatio} from "react-native";
+import {RegisterPage} from "./screens/registerPage";
 
-console.log(PixelRatio.get())
+
+
+
+
 
 
 export default function App() {
@@ -20,9 +23,7 @@ export default function App() {
 
   return (
 
-  // <Welcome/>
-      <Features/>
-
+  <RegisterPage/>
 
   );
 }

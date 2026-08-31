@@ -26,12 +26,12 @@ export const Welcome = () =>{
                 </WrapperText>
 
 
-                <View>
+
+               <View>
+                   <ButtonOnBordings  text={"Começar"} />
+               </View>
 
 
-                </View>
-
-                <ButtonOnBordings  text={"Começar"} />
 
 
 
