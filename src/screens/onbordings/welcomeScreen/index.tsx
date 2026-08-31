@@ -1,4 +1,3 @@
-
 import {View, Text, TouchableOpacity} from "react-native";
 import {Conteiner, Main, Subtitle, Textconteiner, Title, WrapperText} from "./style";
 import Logo from "../../../components/logo";
@@ -29,9 +28,10 @@ export const Welcome = () =>{
 
                 <View>
 
+
                 </View>
 
-                <ButtonOnBordings text={"Começar"} />
+                <ButtonOnBordings  text={"Começar"} />
 
 
 
