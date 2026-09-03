@@ -10,9 +10,11 @@ export const theme = {
         white: '#FFFFFF',
         black: '#1A1A1A',
         dustyGray: '#878787',
+        Neutraln200: '#E2E8F0',
     },
     fonts:{
         bold: 'Poppins_700Bold',
         regular: 'Poppins_400Regular',
+        medium: 'Poppins_500Medium',
     }
 }
