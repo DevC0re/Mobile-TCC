@@ -40,9 +40,9 @@ export const RegisterPage = () => {
 
                             <Input label={"Email:"} textplace={"Digite o email"} autocapitalize={"none"}/>
 
-                            <Input label={"Senha:"} textplace={"Deve conter 8 caracteres."} password autocapitalize={"none"} />
+                            <Input label={"Senha:"} textplace={" Sua senha Deve conter 6 caracteres."} password autocapitalize={"none"} />
 
-                            <Input label={"Confirme sua senha:"} textplace={"Digite sua senha"} password autocapitalize={"none"} />
+                            <Input label={"Confirme sua senha:"} textplace={"Confirme sua senha"} password autocapitalize={"none"} />
 
                         </FormConteiner>
 
