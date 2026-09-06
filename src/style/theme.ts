@@ -17,4 +17,5 @@ export const theme = {
         regular: 'Poppins_400Regular',
         medium: 'Poppins_500Medium',
     }
+
 }

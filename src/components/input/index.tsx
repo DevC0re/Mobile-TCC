@@ -2,6 +2,7 @@ import {TextInput, View, Text, Pressable} from "react-native";
 import {Inputstyle, LabelInput} from "./style";
 import {Eye, EyeOff,} from "lucide-react-native";
 import React, {useState} from "react";
+import {useBreakpoint} from "../../hooks/useBreakpoint";
 
 
 
@@ -21,9 +22,11 @@ export const Input = ({label, textplace, password, autocapitalize} : IProps) =>{
         setIsPasswordVisible(prev => !prev);
     }
 
+    const {isSmall, isTablet} = useBreakpoint();
+
     return (
         <View>
-            <LabelInput>{label}</LabelInput>
+            <LabelInput isSmall={isSmall} >{label}</LabelInput>
             <Inputstyle>
                 <TextInput placeholder={textplace} secureTextEntry={password ? !isPasswordVisible : false} autoCapitalize={autocapitalize} />
                 { password &&

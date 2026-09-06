@@ -1,6 +1,6 @@
 import {SafeAreaView} from "react-native-safe-area-context";
 import {Input} from "../../components/input";
-import {View, Text} from "react-native";
+import {View, ScrollView} from "react-native";
 import {
     ButtonSection,
     Conteiner, FormConteiner,
@@ -13,54 +13,62 @@ import {
 } from "./style";
 import {BackButton} from "../../components/backButton";
 import {ButtonRegister} from "../../components/ButtonRegister";
-
-
+import {useBreakpoint} from "../../hooks/useBreakpoint";
 
 export const RegisterPage = () => {
+
+    const {isSmall, isTablet} = useBreakpoint();
+
     return(
         <Main>
-            <Conteiner>
+            <ScrollView>
 
-                <Header>
-                    <BackButton/>
-                </Header>
+                <Conteiner isSmall={isSmall} isTablet={isTablet}>
 
-                <RegisterForm>
+                    <Header>
+                        <BackButton/>
+                    </Header>
 
-                    <Title allowFontScaling={false}>Registro</Title>
+                    <RegisterForm isSmall={isSmall}>
 
-                    <FormConteiner>
-                        <Input label={"Nome:"} textplace={"Digite o texto aqui"} />
+                        <Title isSmall={isSmall} isTablet={isTablet} maxFontSizeMultiplier={1.5}>
+                            Registro
+                        </Title>
 
-                        <Input label={"Email:"} textplace={"Digite o email"} autocapitalize={"none"}/>
+                        <FormConteiner isTablet={isTablet}>
+                            <Input label={"Nome:"} textplace={"Digite o texto aqui"} />
 
-                        <Input label={"Senha:"} textplace={"Deve conter 8 caracteres."} password autocapitalize={"none"} />
+                            <Input label={"Email:"} textplace={"Digite o email"} autocapitalize={"none"}/>
 
-                        <Input label={"Confirme sua senha:"} textplace={"Digite sua senha"} password autocapitalize={"none"} />
+                            <Input label={"Senha:"} textplace={"Deve conter 8 caracteres."} password autocapitalize={"none"} />
 
-                    </FormConteiner>
+                            <Input label={"Confirme sua senha:"} textplace={"Digite sua senha"} password autocapitalize={"none"} />
 
-                </RegisterForm>
+                        </FormConteiner>
 
-                <ButtonSection>
-                    <ButtonRegister text={"Criar nova conta"} />
+                    </RegisterForm>
 
-                    <View>
-                        <TextPrivacidade>
-                            Não tem conta? <TextHighlight>Criar conta</TextHighlight>
-                        </TextPrivacidade>
-                        <TextPrivacidade>
-                            Ao continuar, você concorda com nossos
-                            <TextHighlight>Termos de Serviço
-                            </TextHighlight> e <TextHighlight>
-                            Política de Privacidade
-                        </TextHighlight>.
-                        </TextPrivacidade>
-                    </View>
+                    <ButtonSection isTablet={isTablet}>
+                        <ButtonRegister text={"Criar nova conta"} />
 
-                </ButtonSection>
+                        <View>
+                            <TextPrivacidade isSmall={isSmall}>
+                                Não tem conta? <TextHighlight isSmall={isSmall}>Criar conta</TextHighlight>
+                            </TextPrivacidade>
+                            <TextPrivacidade isSmall={isSmall}>
+                                Ao continuar, você concorda com nossos{" "}
+                                <TextHighlight isSmall={isSmall}>Termos de Serviço</TextHighlight>
+                                {" "}e{" "}
+                                <TextHighlight isSmall={isSmall}>Política de Privacidade</TextHighlight>.
+                            </TextPrivacidade>
+                        </View>
 
-            </Conteiner>
+                    </ButtonSection>
+
+                </Conteiner>
+
+            </ScrollView>
+
 
         </Main>
     )
