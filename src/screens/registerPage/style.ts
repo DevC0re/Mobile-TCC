@@ -61,3 +61,8 @@ export const TextHighlight = styled(Text)<ResponsiveProps>`
     font-family: ${theme.fonts.regular};
     color: ${theme.colors.teal};
 `;
+
+export const ContentWrapper = styled(View)`
+	width: 100%;
+	gap: 60px;
+`;

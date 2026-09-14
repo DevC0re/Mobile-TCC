@@ -1,4 +1,4 @@
-import { Text, TextInput, View } from "react-native";
+import {Text, TextInput, View} from "react-native";
 import styled from "styled-components/native";
 import { theme } from "../../../style/theme";
 
@@ -7,7 +7,7 @@ interface ResponsiveProps {
 	isTablet?: boolean;
 }
 interface ButtonProps {
-	Erro: boolean;
+	Erro?: boolean;
 }
 
 export const Inputstyle = styled(View)<ButtonProps>`
@@ -26,4 +26,6 @@ export const LabelInput = styled(Text)<ResponsiveProps>`
     font-family: ${theme.fonts.regular};
     line-height: 22px;
 `;
-
+export const InputField = styled(TextInput)<ResponsiveProps>`
+	flex: 1;
+`

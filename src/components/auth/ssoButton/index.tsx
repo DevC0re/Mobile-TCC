@@ -1,4 +1,3 @@
-import { Pressable, Text } from "react-native";
 import { ButtonStyle, TextButton } from "./style";
 import { useBreakpoint } from "../../../hooks/useBreakpoint";
 import { GoogleLogo } from "../../logoGoogle";

@@ -1,7 +1,7 @@
 import { SafeAreaView } from "react-native-safe-area-context";
 import styled from "styled-components/native";
 import { theme } from "../../style/theme";
-import { ScrollView, Text, View } from "react-native";
+import { Text, View } from "react-native";
 
 interface ResponsiveProps {
 	isSmall?: boolean;
@@ -76,4 +76,4 @@ export const ForgotPasswordContainer = styled(View)`
 export const ContentWrapper = styled(View)`
 	width: 100%;
 	gap: 60px;
-`
+`;

@@ -1,4 +1,3 @@
-import { Pressable, Text } from "react-native";
 import { useBreakpoint } from "../../../hooks/useBreakpoint";
 import { Buttonregister, TextButton } from "./style";
 
