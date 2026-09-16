@@ -3,14 +3,15 @@ import { Buttonregister, TextButton } from "./style";
 
 interface PropsButton {
 	text: string;
+	disabled: boolean;
 	onPress?: () => void;
 }
 
-export const ButtonAuth = ({ text, onPress }: PropsButton) => {
+export const ButtonAuth = ({ text, onPress, disabled }: PropsButton) => {
 	const { isSmall } = useBreakpoint();
 
 	return (
-		<Buttonregister onPress={onPress}>
+		<Buttonregister disabled={disabled} onPress={onPress}>
 			<TextButton isSmall={isSmall}>{text}</TextButton>
 		</Buttonregister>
 	);

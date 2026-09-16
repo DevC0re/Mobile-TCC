@@ -22,33 +22,53 @@ import {NativeStackNavigationProp} from "@react-navigation/native-stack";
 import {NavigationType} from "../../types/navigationType";
 import {useNavigation} from "@react-navigation/native";
 import {useState} from "react";
+import {MessageErro} from "../../components/erroMsg";
+import {setItemAsync} from "expo-secure-store";
 
 type NavigationProps = NativeStackNavigationProp<NavigationType, 'Login'>;
+
 
 export const LoginPage = () => {
 	const { isSmall, isTablet } = useBreakpoint();
 
+	const usertest = {
+		email: "test@gmail.com",
+		password: "123456",
+	}
 	const navigation = useNavigation<NavigationProps>();
 
 	const handleGoRegistrePage= () =>{
 		navigation.navigate("Register")
 	}
 
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
+	const [formData, setFormData] = useState({
+		email: "",
+		password: "",
+	})
 
-	const [error, setError] = useState(false);
-	const validar = () => {
-		console.log(email)
-		console.log(password)
+	const [eformData, setEformData] = useState("")
 
-		if (password.length < 6) {
-			console.log("senha deve ser ter 6 ou mais carateres")
-			setError(true);
-		}else if (password.length >= 6){
-			setError(false);
+	const [error, setError] = useState(false)
+
+	const [loading, setLoading] = useState(false)
+
+	const handleLogin = async () => {
+
+		setLoading(true)
+
+		if (!formData.email.trim() || !formData.password.trim()) {
+			setEformData("Preencha todos os campos")
+			setError(true)
 		}
+		if ( formData.email != usertest.email || formData.password != usertest.password) {
+			setError(true)
+			setEformData("Email ou senha incorretos. Por favor, verifique")
 
+		}if (formData.email === usertest.email && formData.password === usertest.password) {
+			setItemAsync("token", "true")
+
+		}
+		setLoading(false)
 
 	}
 	return (
@@ -70,19 +90,28 @@ export const LoginPage = () => {
 							<FormConteiner>
 								<Input textplace={"Digite seu e-mail"}
 									   label={"E-mail:"}
-									   value={email}
-									   onChangeText={setEmail}
-										/>
+									   value={formData.email}
+									   onChangeText={(value) => setFormData(prevState => ({...prevState, email: value}))}
+										error={error}
+								/>
+								{error && (
+									<MessageErro errorText={eformData}/>
+								) }
+
 
 								<Input
 									textplace={"Digite sua senha"}
 									label={"Senha:"}
 									password
 									autocapitalize={"none"}
-									value={password}
-									onChangeText={setPassword}
+									value={formData.password}
+									onChangeText={(value) => setFormData(prevState => ({...prevState, password: value}))}
 									error={error}
 								/>
+								{error && (
+									<MessageErro errorText={eformData}/>
+								) }
+
 								<ForgotPasswordContainer>
 									<ForgotPasswordLink>Esqueceu sua senha?</ForgotPasswordLink>
 								</ForgotPasswordContainer>
@@ -91,7 +120,7 @@ export const LoginPage = () => {
 					</ContentWrapper>
 
 					<ButtonSection isTablet={isTablet}>
-						<ButtonAuth onPress={validar} text={"Conecte-se"} />
+						<ButtonAuth onPress={handleLogin} text={"Conecte-se"} disabled={loading} />
 
 						<View>
 							<TextPrivacidade isSmall={isSmall}>
