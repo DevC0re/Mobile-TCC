@@ -57,14 +57,19 @@ export const LoginPage = () => {
 		setLoading(true)
 
 		if (!formData.email.trim() || !formData.password.trim()) {
+			setEformData("")
+			setError(false)
+
 			setEformData("Preencha todos os campos")
 			setError(true)
-		}
-		if ( formData.email != usertest.email || formData.password != usertest.password) {
+		} else if ( formData.email != usertest.email || formData.password != usertest.password) {
+			setEformData("")
+			setError(false)
+
 			setError(true)
 			setEformData("Email ou senha incorretos. Por favor, verifique")
 
-		}if (formData.email === usertest.email && formData.password === usertest.password) {
+		} else if (formData.email === usertest.email && formData.password === usertest.password) {
 			setItemAsync("token", "true")
 
 		}
