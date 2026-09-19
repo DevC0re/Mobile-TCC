@@ -8,7 +8,10 @@ export const theme = {
 		black: "#1A1A1A",
 		dustyGray: "#878787",
 		Neutraln200: "#E2E8F0",
+		Neutral600: "#475569",
+		Neutral800: "#1E293B",
 		redErro: "#D12E34",
+		Neutral400: "#94A3B8",
 	},
 	fonts: {
 		bold: "Poppins_700Bold",

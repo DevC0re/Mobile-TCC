@@ -41,6 +41,10 @@ export const LoginPage = () => {
 		navigation.navigate("Register")
 	}
 
+	const handleGoRecoverPassword= () =>{
+		navigation.navigate("RecoveryPassword")
+	}
+
 	const [formData, setFormData] = useState({
 		email: "",
 		password: "",
@@ -118,7 +122,7 @@ export const LoginPage = () => {
 								) }
 
 								<ForgotPasswordContainer>
-									<ForgotPasswordLink>Esqueceu sua senha?</ForgotPasswordLink>
+									<ForgotPasswordLink onPress={handleGoRecoverPassword}>Esqueceu sua senha?</ForgotPasswordLink>
 								</ForgotPasswordContainer>
 							</FormConteiner>
 						</LoginForm>

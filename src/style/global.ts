@@ -38,3 +38,22 @@ export const TitleAuth = styled(Text)<ResponsiveProps>`
     color: ${theme.colors.navy};
     font-family: ${theme.fonts.bold};
 `;
+
+export const ContentWrapper = styled(View)`
+	width: 100%;
+	gap: 60px;
+`;
+
+export const ButtonSectionAuth = styled(View)<ResponsiveProps>`
+    width: 100%;
+    padding: ${(props) => (props.isTablet ? "0 40px" : "0 16px")};
+    gap: 16px;
+`;
+
+
+export const Textinstruction = styled(Text)<ResponsiveProps>`
+    font-size: ${(props) => (props.isSmall ? "12px" : "14px")};
+    text-align: center;
+    font-family: ${theme.fonts.regular};
+    color: ${theme.colors.Neutral600};
+`

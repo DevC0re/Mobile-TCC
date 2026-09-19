@@ -5,6 +5,8 @@ import { NavigationType } from "../types/navigationType";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { LoginPage } from "../screens/loginPage";
 import { RegisterPage } from "../screens/registerPage";
+import {PasswordRecovery} from "../screens/passwordRecoveryPage";
+import {VerificationPage} from "../screens/accountVerificationPage";
 
 const Stack = createNativeStackNavigator<NavigationType>();
 
@@ -16,6 +18,10 @@ export const Routes = () => {
 				<Stack.Screen name="Login" component={LoginPage} />
 
 				<Stack.Screen name="Register" component={RegisterPage} />
+
+				<Stack.Screen name="RecoveryPassword" component={PasswordRecovery}/>
+
+				<Stack.Screen name="VerifyAccount" component={VerificationPage}/>
 
 			</Stack.Navigator>
 		</NavigationContainer>
