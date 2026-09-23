@@ -77,5 +77,3 @@ export const ContentWrapper = styled(View)`
 	width: 100%;
 	gap: 60px;
 `;
-
-

@@ -2,7 +2,7 @@ import { Eye, EyeOff } from "lucide-react-native";
 import React, { useState } from "react";
 import { Pressable, TextInput, View } from "react-native";
 import { useBreakpoint } from "../../../hooks/useBreakpoint";
-import {InputField, Inputstyle, LabelInput} from "./style";
+import { InputField, Inputstyle, LabelInput } from "./style";
 
 interface IProps {
 	textplace: string;
@@ -22,8 +22,6 @@ export const Input = ({
 	error,
 	value,
 	onChangeText,
-
-
 }: IProps) => {
 	const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
@@ -32,7 +30,6 @@ export const Input = ({
 	};
 
 	const { isSmall } = useBreakpoint();
-
 
 	return (
 		<View>

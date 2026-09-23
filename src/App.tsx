@@ -5,7 +5,7 @@ import {
 	useFonts,
 } from "@expo-google-fonts/poppins";
 
-import {Routes} from "./navigation";
+import { Routes } from "./navigation";
 
 export default function App() {
 	const [fontsLoaded] = useFonts({

@@ -50,10 +50,9 @@ export const ButtonSectionAuth = styled(View)<ResponsiveProps>`
     gap: 16px;
 `;
 
-
 export const Textinstruction = styled(Text)<ResponsiveProps>`
     font-size: ${(props) => (props.isSmall ? "12px" : "14px")};
     text-align: center;
     font-family: ${theme.fonts.regular};
     color: ${theme.colors.Neutral600};
-`
+`;

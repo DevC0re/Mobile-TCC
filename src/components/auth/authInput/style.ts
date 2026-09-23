@@ -1,4 +1,4 @@
-import {Text, TextInput, View} from "react-native";
+import { Text, TextInput, View } from "react-native";
 import styled from "styled-components/native";
 import { theme } from "../../../style/theme";
 
@@ -28,4 +28,4 @@ export const LabelInput = styled(Text)<ResponsiveProps>`
 `;
 export const InputField = styled(TextInput)<ResponsiveProps>`
 	flex: 1;
-`
+`;
