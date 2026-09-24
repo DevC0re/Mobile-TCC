@@ -1,6 +1,6 @@
+import { Pressable } from "react-native";
 import styled from "styled-components/native";
-import {Pressable} from "react-native";
-import {theme} from "../../style/theme";
+import { theme } from "../../style/theme";
 
 export const Back = styled(Pressable)`
     background-color: ${theme.colors.white};
@@ -8,4 +8,4 @@ export const Back = styled(Pressable)`
     justify-content: center;
     border-radius: 999px;
     align-self: flex-start;
-`
+`;

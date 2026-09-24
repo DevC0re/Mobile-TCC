@@ -1,7 +1,7 @@
-import { Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import styled from "styled-components/native";
 import { theme } from "../../style/theme";
+import { Text, View } from "react-native";
 
 interface ResponsiveProps {
 	isSmall?: boolean;
@@ -16,12 +16,12 @@ export const Main = styled(SafeAreaView)`
 export const Conteiner = styled(View)<ResponsiveProps>`
     padding: ${(props) => (props.isTablet ? "50px 60px" : "30px 25px")};
     align-items: center;
-    height: 100%;
     justify-content: space-between;
     gap: ${(props) => (props.isSmall ? "20px" : "35px")};
+    height: 100%;
 `;
 
-export const RegisterForm = styled(View)<ResponsiveProps>`
+export const LoginForm = styled(View)<ResponsiveProps>`
     width: 100%;
     align-items: center;
     gap: ${(props) => (props.isSmall ? "25px" : "35px")};
@@ -59,7 +59,18 @@ export const TextPrivacidade = styled(Text)<ResponsiveProps>`
 export const TextHighlight = styled(Text)<ResponsiveProps>`
     font-size: ${(props) => (props.isSmall ? "12px" : "14px")};
     font-family: ${theme.fonts.regular};
+    color: ${theme.colors.teal}; 
+`;
+export const ForgotPasswordLink = styled(Text)<ResponsiveProps>`
+    font-size: ${(props) => (props.isSmall ? "12px" : "14px")};
+    font-family: ${theme.fonts.regular};
     color: ${theme.colors.teal};
+    text-decoration-line: underline;
+ 
+`;
+
+export const ForgotPasswordContainer = styled(View)`
+    align-items: flex-end;
 `;
 
 export const ContentWrapper = styled(View)`

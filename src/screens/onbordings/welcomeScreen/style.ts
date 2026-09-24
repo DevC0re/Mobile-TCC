@@ -1,15 +1,13 @@
+import { Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import styled from "styled-components/native";
-import {theme} from "../../../style/theme";
-import {View, Text, Image, TouchableOpacity} from "react-native";
-import {SafeAreaView} from "react-native-safe-area-context";
-
-
+import { theme } from "../../../style/theme";
 
 export const Main = styled(SafeAreaView)`
 
     background-color: ${theme.colors.teal};
     
-`
+`;
 export const Conteiner = styled(View)`
     height: 100%;
     justify-content:space-between;
@@ -18,22 +16,20 @@ export const Conteiner = styled(View)`
     padding-bottom: 60px;
     padding-left: 25px ;
     padding-right: 25px ;
-`
+`;
 
 export const Title = styled(Text)`
     font-size: 32px;
     color: ${theme.colors.white};
     font-family: ${theme.fonts.bold};
 
-`
-
-
+`;
 
 export const Subtitle = styled(Text)`
     color: ${theme.colors.white};
     font-family: ${theme.fonts.bold};
     font-size: 32px;
-`
+`;
 
 export const Textconteiner = styled(Text)`
     color: ${theme.colors.white};
@@ -44,7 +40,7 @@ export const Textconteiner = styled(Text)`
     text-align: center;
 
 
-`
+`;
 
 export const WrapperText = styled(View)`
     flex-direction: column;
@@ -53,4 +49,4 @@ export const WrapperText = styled(View)`
     
 
 
-`
+`;

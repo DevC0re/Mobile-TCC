@@ -1,49 +1,34 @@
-import {View, Text, TouchableOpacity} from "react-native";
-import {Conteiner, Main, Subtitle, Textconteiner, Title, WrapperText} from "./style";
+import { Text, TouchableOpacity, View } from "react-native";
+import { ButtonOnBordings } from "../../../components/buttonOnbordings";
 import Logo from "../../../components/logo";
-import {ButtonOnBordings} from "../../../components/buttonOnbordings";
+import {
+	Conteiner,
+	Main,
+	Subtitle,
+	Textconteiner,
+	Title,
+	WrapperText,
+} from "./style";
 
+export const Welcome = () => {
+	return (
+		<Main>
+			<Conteiner>
+				<Title>MedUp</Title>
+				<Logo />
+				<WrapperText>
+					<Subtitle>Bem-vindo ao MedUp!</Subtitle>
+					<Textconteiner>
+						Encontre hospitais próximos à sua localização e tenha acesso rápido
+						às informações necessárias para escolher a melhor opção de
+						atendimento.
+					</Textconteiner>
+				</WrapperText>
 
-
-
-export const Welcome = () =>{
-    return(
-        <Main>
-            <Conteiner>
-                <Title>
-                    MedUp
-                </Title>
-                   <Logo/>
-                <WrapperText>
-                    <Subtitle>
-                        Bem-vindo ao MedUp!
-                    </Subtitle>
-                    <Textconteiner>
-                        Encontre hospitais próximos à sua localização e
-                        tenha acesso rápido às informações necessárias para
-                        escolher a melhor opção de atendimento.
-                    </Textconteiner>
-                </WrapperText>
-
-
-
-               <View>
-                   <ButtonOnBordings  text={"Começar"} />
-               </View>
-
-
-
-
-
-
-            </Conteiner>
-
-        </Main>
-
-    )
-}
-
-
-
-
-
+				<View>
+					<ButtonOnBordings text={"Começar"} />
+				</View>
+			</Conteiner>
+		</Main>
+	);
+};
