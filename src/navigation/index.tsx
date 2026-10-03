@@ -8,7 +8,7 @@ import { RegisterPage } from "../screens/registerPage";
 import { PasswordRecovery } from "../screens/passwordRecoveryPage";
 import { VerificationPage } from "../screens/accountVerificationPage";
 import { NewPasswordScreen } from "../screens/newPasswordScreen";
-import {HomePage} from "../screens/homePage";
+import { HomePage } from "../screens/homePage";
 
 const Stack = createNativeStackNavigator<NavigationType>();
 
