@@ -1,4 +1,4 @@
-import { ScrollView } from "react-native";
+
 import { CardHospital } from "../cardHospital";
 import { HorizontalScrollConteiner } from "./style";
 

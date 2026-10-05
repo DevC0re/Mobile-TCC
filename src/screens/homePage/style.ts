@@ -15,13 +15,14 @@ export const Main = styled(SafeAreaView)`
 
 export const Conteiner = styled(View)`
     background-color: ${theme.colors.skyBlue};
-    gap: 25px;
+	flex: 1;
 `;
 
 export const ScrollContent = styled(ScrollView).attrs({
 	contentContainerStyle: {
 		gap: 25,
 		flexGrow: 1,
+		paddingTop:25,
 	},
 })``;
 

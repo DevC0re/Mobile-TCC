@@ -6,8 +6,4 @@ export const SectionCard = styled(View)`
     padding: 20px 15px;
 `;
 
-export const SectionCardScroll = styled(ScrollView).attrs({
-	contentContainerStyle: {
-		flexGrow: 1,
-	},
-})``;
+
