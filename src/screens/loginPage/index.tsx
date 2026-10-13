@@ -78,6 +78,7 @@ export const LoginPage = () => {
 			formData.password === usertest.password
 		) {
 			setItemAsync("token", "true");
+			navigation.navigate("HomePage");
 		}
 		setLoading(false);
 	};

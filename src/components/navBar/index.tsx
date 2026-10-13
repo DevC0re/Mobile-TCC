@@ -22,10 +22,13 @@ export const NavBar = ({
 	const handleHome = () => {
 		navigation.navigate("HomePage");
 	};
+	const handleSearch = () => {
+		navigation.navigate("SearchPage");
+	};
 
 	return (
 		<NavBarContainer>
-			<ButtonNavbar isActive={activeSearchPage}>
+			<ButtonNavbar isActive={activeSearchPage} onPress={handleSearch}>
 				<Search />
 			</ButtonNavbar>
 

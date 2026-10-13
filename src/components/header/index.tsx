@@ -5,7 +5,11 @@ import LogoHeader from "./logoHeader";
 import { Headerconteiner, Title } from "./style";
 import { useBreakpoint } from "../../hooks/useBreakpoint";
 
-export const Header = () => {
+interface PropsHeader {
+	title: string;
+}
+
+export const Header = ({ title }: PropsHeader) => {
 	const { isSmall, isTablet } = useBreakpoint();
 
 	return (
@@ -13,7 +17,7 @@ export const Header = () => {
 			<Pressable>
 				<ArrowLeft />
 			</Pressable>
-			<Title isSmall={isSmall}>Home</Title>
+			<Title isSmall={isSmall}>{title}</Title>
 			<LogoHeader />
 		</Headerconteiner>
 	);

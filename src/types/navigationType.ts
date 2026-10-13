@@ -5,4 +5,5 @@ export type NavigationType = {
 	VerifyAccount: undefined;
 	NewPassword: undefined;
 	HomePage: undefined;
+	SearchPage: undefined;
 };

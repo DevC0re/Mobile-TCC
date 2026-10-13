@@ -14,9 +14,8 @@ export const HomePage = () => {
 	return (
 		<Main>
 			<Conteiner>
-				<Header />
+				<Header title={"Home"} />
 				<ScrollContent showsVerticalScrollIndicator={false}>
-					{/*<Subtitle></Subtitle>*/}
 					<SectionScrollhorizontal />
 
 					<View>
