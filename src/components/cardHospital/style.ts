@@ -6,6 +6,11 @@ interface CardHospitalProps {
 	highestScore?: boolean;
 }
 
+interface ResponsiveProps {
+	isSmall?: boolean;
+	isTablet?: boolean;
+}
+
 export const HospitalImage = styled(Image)<CardHospitalProps>`
     
     width: ${(props) => (props.highestScore ? "280px" : "100px")};
@@ -26,6 +31,7 @@ export const HospitalContainer = styled(View)<CardHospitalProps>`
     border-radius: 12px;
     gap: 5px;
     flex: 1;
+	overflow: hidden;
 `;
 
 export const HospitalName = styled(View)`
@@ -33,6 +39,7 @@ export const HospitalName = styled(View)`
     align-items: center;
     gap: 10px;
     justify-items: flex-start;
+	
 `;
 
 export const Hospitaladress = styled(View)`
@@ -52,10 +59,12 @@ export const TagContainer = styled(View)`
     padding: 2px 4px;
     justify-content: flex-start;
 `;
-export const NameHospital = styled(Text)`
-    font-size: 18px;
+export const NameHospital = styled(Text)<ResponsiveProps>`
+    font-size: ${(props) => (props.isSmall ? "15px" : "18px")};
     font-family: ${theme.fonts.semibold};
-    color: ${theme.colors.black}
+    color: ${theme.colors.black};
+	flex: ;
+	
 `;
 export const TextAdress = styled(Text)`
     font-size: 15px;
