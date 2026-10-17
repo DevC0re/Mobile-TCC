@@ -34,7 +34,7 @@ export const CardHospital = ({ highestScore }: HospitalProps) => {
 			<HospitalImage source={hospital} highestScore={highestScore} />
 			<HospitalConteinerText>
 				<HospitalName>
-					<NameHospital isSmall={isSmall}> Hospital Geral de Grajaú</NameHospital>
+					<NameHospital isSmall={isSmall}>Hospital Geral de Grajaú</NameHospital>
 					<Pressable onPress={addfavorite}>
 						<Heart fill={favorite ? "#C82909" : "none"} color={"#C82909"} />
 					</Pressable>
@@ -42,7 +42,7 @@ export const CardHospital = ({ highestScore }: HospitalProps) => {
 
 				<Hospitaladress>
 					<MapPin />
-					<TextAdress> Rua Francisco Octávio Pacca</TextAdress>
+					<TextAdress>Rua Francisco Octávio Pacca</TextAdress>
 				</Hospitaladress>
 
 				<Line></Line>
