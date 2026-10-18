@@ -1,4 +1,4 @@
-import { Main } from "./style";
+import {Conteiner, Main} from "./style";
 import { NavBar } from "../../components/navBar";
 import { View } from "react-native";
 import { Header } from "../../components/header";
@@ -10,7 +10,7 @@ import Searchimage from "../../components/searchImagem";
 export const SearchPage = () => {
 	return (
 		<Main>
-			<View>
+			<Conteiner>
 				<Header title={"Pesquisar"} />
 				<InputSearch />
 
@@ -21,7 +21,7 @@ export const SearchPage = () => {
 				</View>
 
 				<NavBar activeSearchPage={true} />
-			</View>
+			</Conteiner>
 		</Main>
 	);
 };

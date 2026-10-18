@@ -21,5 +21,6 @@ export const CardStyle = styled(View)`
     gap: 5px;
     align-items: center;
     padding: 5px 10px ;
+    flex-direction: column;
     
 `;
