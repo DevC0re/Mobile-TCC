@@ -14,9 +14,9 @@ import { ButtonAuth } from "../../components/auth/authButton";
 import { useState } from "react";
 import { validations } from "../../utils/validations";
 import { MessageErro } from "../../components/erroMsg";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { useNavigation } from "@react-navigation/native";
-import { NavigationType } from "../../types/navigationType";
+import type { NavigationType } from "../../types/navigationType";
 
 type NavigationProps = NativeStackNavigationProp<
 	NavigationType,

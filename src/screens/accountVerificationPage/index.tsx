@@ -19,8 +19,8 @@ import { Input } from "../../components/auth/authInput";
 import { ButtonAuth } from "../../components/auth/authButton";
 import { useEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { NavigationType } from "../../types/navigationType";
+import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import type { NavigationType } from "../../types/navigationType";
 import { MessageErro } from "../../components/erroMsg";
 import { useBreakpoint } from "../../hooks/useBreakpoint";
 

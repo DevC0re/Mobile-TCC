@@ -1,7 +1,7 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 
-import { NavigationType } from "../types/navigationType";
+import type { NavigationType } from "../types/navigationType";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { LoginPage } from "../screens/loginPage";
 import { RegisterPage } from "../screens/registerPage";

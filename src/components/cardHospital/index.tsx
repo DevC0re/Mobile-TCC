@@ -14,7 +14,7 @@ import {
 	TextAdress,
 } from "./style";
 import { InfoTag } from "../infoTag";
-import {useBreakpoint} from "../../hooks/useBreakpoint";
+import { useBreakpoint } from "../../hooks/useBreakpoint";
 
 interface HospitalProps {
 	highestScore?: boolean;
@@ -27,14 +27,16 @@ export const CardHospital = ({ highestScore }: HospitalProps) => {
 		setFavorite((prevState) => !prevState);
 	};
 
-	const {isSmall, isTablet} = useBreakpoint();
+	const { isSmall, isTablet } = useBreakpoint();
 
 	return (
 		<HospitalContainer highestScore={highestScore}>
 			<HospitalImage source={hospital} highestScore={highestScore} />
 			<HospitalConteinerText>
 				<HospitalName>
-					<NameHospital isSmall={isSmall}>Hospital Geral de Grajaú</NameHospital>
+					<NameHospital isSmall={isSmall}>
+						Hospital Geral de Grajaú
+					</NameHospital>
 					<Pressable onPress={addfavorite}>
 						<Heart fill={favorite ? "#C82909" : "none"} color={"#C82909"} />
 					</Pressable>

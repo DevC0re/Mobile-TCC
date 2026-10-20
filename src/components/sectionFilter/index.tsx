@@ -10,7 +10,7 @@ import {
 	Brain,
 	Eye,
 	Bone,
-	LucideIcon,
+	type LucideIcon,
 } from "lucide-react-native";
 
 interface Especialidade {
