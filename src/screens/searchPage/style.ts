@@ -14,6 +14,7 @@ export const Conteiner = styled(View)`
     flex: 1;
     gap: 25px;
     height: 100%;
+    padding: 10px;
 `;
 
 export const ImageContainer = styled(View)`

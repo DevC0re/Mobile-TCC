@@ -7,8 +7,8 @@ export const CardFilterContainer = styled(View)`
     border: 1px solid ${theme.colors.black};
     border-radius: 100px;
     align-items: center;
-    padding: 10px;
-     width: 80%;
+    padding: 10px 20px ;
+    
 `;
 export const CardFilterText = styled(Text)`
      font-family: ${theme.fonts.medium};

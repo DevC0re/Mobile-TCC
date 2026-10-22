@@ -13,7 +13,7 @@ interface ResponsiveProps {
 
 export const HospitalImage = styled(Image)<CardHospitalProps>`
     width: ${(props) => (props.highestScore ? "280px" : "100px")};
-    height: ${(props) => (props.highestScore ? "180px" : "100px")};
+    height: ${(props) => (props.highestScore ? "180px" : "100%")};
     border: 1px solid ${theme.colors.black};
     border-radius: 10px;
 `;
@@ -57,7 +57,7 @@ export const TagContainer = styled(View)`
     flex-direction: row;
     gap: 15px;
     padding: 2px 4px;
-    justify-content: flex-start;
+    justify-content: center;
 `;
 
 export const NameHospital = styled(Text)<ResponsiveProps>`

@@ -7,7 +7,7 @@ import {
 	TitleAuth,
 } from "../../style/global";
 import { Headerauth } from "../../components/auth/authheader";
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import {
 	SendcodeContent,
 	SendcodeLink,
@@ -29,7 +29,7 @@ type NavigationProps = NativeStackNavigationProp<NavigationType, "NewPassword">;
 export const VerificationPage = () => {
 	const email = "test@gmail.com";
 
-	const { isSmall, isTablet } = useBreakpoint();
+	const { isSmall, } = useBreakpoint();
 
 	const [code, setCode] = useState("");
 

@@ -8,8 +8,9 @@ import Searchimage from "../../components/searchImagem";
 export const SearchPage = () => {
 	return (
 		<Main>
+			<Header title={"Pesquisar"} />
 			<Conteiner>
-				<Header title={"Pesquisar"} />
+
 				<InputSearch />
 
 				<SectionFilter />
@@ -18,8 +19,8 @@ export const SearchPage = () => {
 					<Searchimage />
 				</ImageContainer>
 
-				<NavBar activeSearchPage={true} />
 			</Conteiner>
+			<NavBar activeSearchPage={true} />
 		</Main>
 	);
 };

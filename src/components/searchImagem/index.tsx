@@ -1,8 +1,10 @@
 import Svg, { type SvgProps, Path } from "react-native-svg";
 const Searchimage = (props: SvgProps) => (
 	<Svg
-		width={300}
-		height={300}
+		width={"100%"}
+		height={"100%"}
+		viewBox="0 0 800 800"
+		preserveAspectRatio="xMidYMid meet"
 		{...props}>
 		<Path
 			fill="#070707"

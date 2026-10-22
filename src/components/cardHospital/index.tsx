@@ -1,4 +1,4 @@
-import { View, Image, Text, Pressable } from "react-native";
+import {Pressable } from "react-native";
 import hospital from "../../assets/img.png";
 import { Heart, MapPin } from "lucide-react-native";
 import { useState } from "react";
