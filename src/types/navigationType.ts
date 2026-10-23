@@ -4,4 +4,5 @@ export type NavigationType = {
 	RecoveryPassword: undefined;
 	VerifyAccount: undefined;
 	NewPassword: undefined;
+	HomePage: undefined;
 };

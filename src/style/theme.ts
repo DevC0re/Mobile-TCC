@@ -17,5 +17,7 @@ export const theme = {
 		bold: "Poppins_700Bold",
 		regular: "Poppins_400Regular",
 		medium: "Poppins_500Medium",
+		semibold: "Poppins_600SemiBold",
+		extrabold: "Poppins_800ExtraBold",
 	},
 };

@@ -81,7 +81,7 @@ export const NewPasswordScreen = () => {
 					<View>
 						<TextContainer>
 							<TitleAuth>Criar nova senha</TitleAuth>
-							<Textinstruction>
+							<Textinstruction isSmall={isSmall}>
 								Por favor, insira e confirme sua nova senha. Você precisará
 								fazer login após redefinir as configurações de fábrica.
 							</Textinstruction>

@@ -2,6 +2,8 @@ import {
 	Poppins_400Regular,
 	Poppins_500Medium,
 	Poppins_700Bold,
+	Poppins_600SemiBold,
+	Poppins_800ExtraBold,
 	useFonts,
 } from "@expo-google-fonts/poppins";
 
@@ -12,6 +14,8 @@ export default function App() {
 		Poppins_700Bold,
 		Poppins_400Regular,
 		Poppins_500Medium,
+		Poppins_600SemiBold,
+		Poppins_800ExtraBold,
 	});
 
 	if (!fontsLoaded) {

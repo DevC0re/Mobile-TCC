@@ -22,11 +22,14 @@ import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { NavigationType } from "../../types/navigationType";
 import { MessageErro } from "../../components/erroMsg";
+import { useBreakpoint } from "../../hooks/useBreakpoint";
 
 type NavigationProps = NativeStackNavigationProp<NavigationType, "NewPassword">;
 
 export const VerificationPage = () => {
 	const email = "test@gmail.com";
+
+	const { isSmall, isTablet } = useBreakpoint();
 
 	const [code, setCode] = useState("");
 
@@ -88,7 +91,7 @@ export const VerificationPage = () => {
 					<View>
 						<TextContainer>
 							<TitleAuth>Verifique a conta</TitleAuth>
-							<Textinstruction>
+							<Textinstruction isSmall={isSmall}>
 								O código foi enviado para <TextHighlight>{email}</TextHighlight>
 								{"  "}
 								Digite o código para verificar sua conta.
