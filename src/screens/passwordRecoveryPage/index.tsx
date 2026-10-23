@@ -6,7 +6,7 @@ import {
 	TitleAuth,
 } from "../../style/global";
 import { Headerauth } from "../../components/auth/authheader";
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import { Input } from "../../components/auth/authInput";
 import { TextConteiner, Textinstruction } from "./style";
 import { useBreakpoint } from "../../hooks/useBreakpoint";
@@ -14,9 +14,9 @@ import { ButtonAuth } from "../../components/auth/authButton";
 import { useState } from "react";
 import { validations } from "../../utils/validations";
 import { MessageErro } from "../../components/erroMsg";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { useNavigation } from "@react-navigation/native";
-import { NavigationType } from "../../types/navigationType";
+import type { NavigationType } from "../../types/navigationType";
 
 type NavigationProps = NativeStackNavigationProp<
 	NavigationType,
@@ -24,7 +24,7 @@ type NavigationProps = NativeStackNavigationProp<
 >;
 
 export const PasswordRecovery = () => {
-	const { isSmall, isTablet } = useBreakpoint();
+	const { isSmall } = useBreakpoint();
 
 	const navigation = useNavigation<NavigationProps>();
 

@@ -22,7 +22,7 @@ export const ScrollContent = styled(ScrollView).attrs({
 	contentContainerStyle: {
 		gap: 25,
 		flexGrow: 1,
-		paddingTop:25,
+		paddingTop: 25,
 	},
 })``;
 

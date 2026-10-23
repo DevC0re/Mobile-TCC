@@ -1,4 +1,3 @@
-
 import { CardHospital } from "../cardHospital";
 import { HorizontalScrollConteiner } from "./style";
 

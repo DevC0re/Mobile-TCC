@@ -4,16 +4,25 @@ import LogoMedup from "../logo";
 import LogoHeader from "./logoHeader";
 import { Headerconteiner, Title } from "./style";
 import { useBreakpoint } from "../../hooks/useBreakpoint";
+import {useNavigation} from "@react-navigation/native";
 
-export const Header = () => {
+interface PropsHeader {
+	title: string;
+}
+
+export const Header = ({ title }: PropsHeader) => {
 	const { isSmall, isTablet } = useBreakpoint();
 
+	const navigation = useNavigation();
+	const handleBack = () => {
+		navigation.goBack();
+	}
 	return (
 		<Headerconteiner>
-			<Pressable>
+			<Pressable onPress={handleBack}>
 				<ArrowLeft />
 			</Pressable>
-			<Title isSmall={isSmall}>Home</Title>
+			<Title isSmall={isSmall}>{title}</Title>
 			<LogoHeader />
 		</Headerconteiner>
 	);

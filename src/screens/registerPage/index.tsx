@@ -16,12 +16,12 @@ import {
 } from "./style";
 import { Scroll } from "../../style/global";
 import { useNavigation } from "@react-navigation/native";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { NavigationType } from "../../types/navigationType";
+import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import type { NavigationType } from "../../types/navigationType";
 import { useState } from "react";
 import { validations } from "../../utils/validations";
 import { MessageErro } from "../../components/erroMsg";
-import * as querystring from "node:querystring";
+
 
 type NavigationProps = NativeStackNavigationProp<NavigationType, "Register">;
 

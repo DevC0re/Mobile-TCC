@@ -1,8 +1,8 @@
 import { CircleUserRound, House, Search } from "lucide-react-native";
 import { ButtonNavbar, NavBarContainer } from "./style";
 import { useNavigation } from "@react-navigation/native";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { NavigationType } from "../../types/navigationType";
+import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import type { NavigationType } from "../../types/navigationType";
 
 type NavigationProps = NativeStackNavigationProp<NavigationType>;
 
@@ -22,10 +22,13 @@ export const NavBar = ({
 	const handleHome = () => {
 		navigation.navigate("HomePage");
 	};
+	const handleSearch = () => {
+		navigation.navigate("SearchPage");
+	};
 
 	return (
 		<NavBarContainer>
-			<ButtonNavbar isActive={activeSearchPage}>
+			<ButtonNavbar isActive={activeSearchPage} onPress={handleSearch}>
 				<Search />
 			</ButtonNavbar>
 

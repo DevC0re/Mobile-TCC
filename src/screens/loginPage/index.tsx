@@ -18,8 +18,8 @@ import { Input } from "../../components/auth/authInput";
 import { ButtonAuth } from "../../components/auth/authButton";
 import { SsoButton } from "../../components/auth/ssoButton";
 import { Scroll } from "../../style/global";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { NavigationType } from "../../types/navigationType";
+import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import type { NavigationType } from "../../types/navigationType";
 import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
 import { MessageErro } from "../../components/erroMsg";
@@ -78,6 +78,7 @@ export const LoginPage = () => {
 			formData.password === usertest.password
 		) {
 			setItemAsync("token", "true");
+			navigation.navigate("HomePage");
 		}
 		setLoading(false);
 	};
