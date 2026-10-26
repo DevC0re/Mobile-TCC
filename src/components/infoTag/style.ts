@@ -1,5 +1,5 @@
-import styled from "styled-components/native";
 import { View } from "react-native";
+import styled from "styled-components/native";
 
 export const TagStyle = styled(View)`
     padding: 5px 10px;

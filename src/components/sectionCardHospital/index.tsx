@@ -1,5 +1,5 @@
-import { SectionCard } from "./style";
 import { CardHospital } from "../cardHospital";
+import { SectionCard } from "./style";
 
 export const SectionCardHospital = () => {
 	return (

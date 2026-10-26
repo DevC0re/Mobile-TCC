@@ -1,15 +1,15 @@
-import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
-
-import type { NavigationType } from "../types/navigationType";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { LoginPage } from "../screens/loginPage";
-import { RegisterPage } from "../screens/registerPage";
-import { PasswordRecovery } from "../screens/passwordRecoveryPage";
+import React from "react";
 import { VerificationPage } from "../screens/accountVerificationPage";
-import { NewPasswordScreen } from "../screens/newPasswordScreen";
 import { HomePage } from "../screens/homePage";
+import { LoginPage } from "../screens/loginPage";
+import { NewPasswordScreen } from "../screens/newPasswordScreen";
+import { PasswordRecovery } from "../screens/passwordRecoveryPage";
+import { RegisterPage } from "../screens/registerPage";
 import { SearchPage } from "../screens/searchPage";
+import { UserPage } from "../screens/userPage";
+import type { NavigationType } from "../types/navigationType";
 
 const Stack = createNativeStackNavigator<NavigationType>();
 
@@ -30,6 +30,8 @@ export const Routes = () => {
 				<Stack.Screen name="HomePage" component={HomePage} />
 
 				<Stack.Screen name="SearchPage" component={SearchPage} />
+
+				<Stack.Screen name="UserPage" component={UserPage} />
 			</Stack.Navigator>
 		</NavigationContainer>
 	);

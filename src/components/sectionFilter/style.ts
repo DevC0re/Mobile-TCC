@@ -1,5 +1,5 @@
-import styled from "styled-components/native";
 import { ScrollView } from "react-native";
+import styled from "styled-components/native";
 
 export const SectionFilterScroll = styled(ScrollView).attrs({
 	contentContainerStyle: {

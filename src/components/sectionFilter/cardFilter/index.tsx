@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { Text, View } from "react-native";
 import { CardFilterContainer, CardFilterText, CardStyle } from "./style";
 
 interface CardFilterProps {

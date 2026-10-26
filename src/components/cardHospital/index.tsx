@@ -1,7 +1,9 @@
-import {Pressable } from "react-native";
-import hospital from "../../assets/img.png";
 import { Heart, MapPin } from "lucide-react-native";
 import { useState } from "react";
+import { Pressable } from "react-native";
+import hospital from "../../assets/img.png";
+import { useBreakpoint } from "../../hooks/useBreakpoint";
+import { InfoTag } from "../infoTag";
 import {
 	Hospitaladress,
 	HospitalContainer,
@@ -13,8 +15,6 @@ import {
 	TagContainer,
 	TextAdress,
 } from "./style";
-import { InfoTag } from "../infoTag";
-import { useBreakpoint } from "../../hooks/useBreakpoint";
 
 interface HospitalProps {
 	highestScore?: boolean;

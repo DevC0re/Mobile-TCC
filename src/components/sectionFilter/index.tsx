@@ -1,17 +1,17 @@
-import { SectionFilterScroll } from "./style";
-import { CardFilter } from "./cardFilter";
 // Importe do 'lucide-react-native' se estiver usando React Native/Expo,
 // ou mantenha 'lucide-react' se for React para Web.
 import {
-	Heart,
-	Sparkles,
 	Baby,
-	Salad,
+	Bone,
 	Brain,
 	Eye,
-	Bone,
+	Heart,
 	type LucideIcon,
+	Salad,
+	Sparkles,
 } from "lucide-react-native";
+import { CardFilter } from "./cardFilter";
+import { SectionFilterScroll } from "./style";
 
 interface Especialidade {
 	id: string;

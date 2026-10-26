@@ -1,5 +1,5 @@
+import { Image, Text, View } from "react-native";
 import styled from "styled-components/native";
-import { Image, View, Text } from "react-native";
 import { theme } from "../../style/theme";
 
 interface CardHospitalProps {
@@ -74,4 +74,3 @@ export const TextAdress = styled(Text)`
     color: ${theme.colors.black};
 	flex: 1;
 `;
-

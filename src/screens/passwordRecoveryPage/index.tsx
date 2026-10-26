@@ -1,3 +1,12 @@
+import { useNavigation } from "@react-navigation/native";
+import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { useState } from "react";
+import { View } from "react-native";
+import { ButtonAuth } from "../../components/auth/authButton";
+import { Headerauth } from "../../components/auth/authheader";
+import { Input } from "../../components/auth/authInput";
+import { MessageErro } from "../../components/erroMsg";
+import { useBreakpoint } from "../../hooks/useBreakpoint";
 import {
 	ButtonSectionAuth,
 	ConteinerAuth,
@@ -5,18 +14,9 @@ import {
 	Main,
 	TitleAuth,
 } from "../../style/global";
-import { Headerauth } from "../../components/auth/authheader";
-import { View } from "react-native";
-import { Input } from "../../components/auth/authInput";
-import { TextConteiner, Textinstruction } from "./style";
-import { useBreakpoint } from "../../hooks/useBreakpoint";
-import { ButtonAuth } from "../../components/auth/authButton";
-import { useState } from "react";
-import { validations } from "../../utils/validations";
-import { MessageErro } from "../../components/erroMsg";
-import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { useNavigation } from "@react-navigation/native";
 import type { NavigationType } from "../../types/navigationType";
+import { validations } from "../../utils/validations";
+import { TextConteiner, Textinstruction } from "./style";
 
 type NavigationProps = NativeStackNavigationProp<
 	NavigationType,

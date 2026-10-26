@@ -1,3 +1,12 @@
+import { useNavigation } from "@react-navigation/native";
+import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { useEffect, useState } from "react";
+import { View } from "react-native";
+import { ButtonAuth } from "../../components/auth/authButton";
+import { Headerauth } from "../../components/auth/authheader";
+import { Input } from "../../components/auth/authInput";
+import { MessageErro } from "../../components/erroMsg";
+import { useBreakpoint } from "../../hooks/useBreakpoint";
 import {
 	ButtonSectionAuth,
 	ConteinerAuth,
@@ -6,8 +15,7 @@ import {
 	Textinstruction,
 	TitleAuth,
 } from "../../style/global";
-import { Headerauth } from "../../components/auth/authheader";
-import { View } from "react-native";
+import type { NavigationType } from "../../types/navigationType";
 import {
 	SendcodeContent,
 	SendcodeLink,
@@ -15,21 +23,13 @@ import {
 	TextContainer,
 	TextHighlight,
 } from "./style";
-import { Input } from "../../components/auth/authInput";
-import { ButtonAuth } from "../../components/auth/authButton";
-import { useEffect, useState } from "react";
-import { useNavigation } from "@react-navigation/native";
-import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import type { NavigationType } from "../../types/navigationType";
-import { MessageErro } from "../../components/erroMsg";
-import { useBreakpoint } from "../../hooks/useBreakpoint";
 
 type NavigationProps = NativeStackNavigationProp<NavigationType, "NewPassword">;
 
 export const VerificationPage = () => {
 	const email = "test@gmail.com";
 
-	const { isSmall, } = useBreakpoint();
+	const { isSmall } = useBreakpoint();
 
 	const [code, setCode] = useState("");
 

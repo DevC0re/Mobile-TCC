@@ -6,4 +6,5 @@ export type NavigationType = {
 	NewPassword: undefined;
 	HomePage: undefined;
 	SearchPage: undefined;
+	UserPage: undefined;
 };

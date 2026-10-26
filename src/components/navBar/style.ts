@@ -1,5 +1,5 @@
-import styled from "styled-components/native";
 import { Pressable, View } from "react-native";
+import styled from "styled-components/native";
 import { theme } from "../../style/theme";
 
 interface ButtonProps {

@@ -1,8 +1,8 @@
 import {
 	Poppins_400Regular,
 	Poppins_500Medium,
-	Poppins_700Bold,
 	Poppins_600SemiBold,
+	Poppins_700Bold,
 	Poppins_800ExtraBold,
 	useFonts,
 } from "@expo-google-fonts/poppins";

@@ -1,7 +1,7 @@
-import styled from "styled-components/native";
-import { ScrollView, View, Text } from "react-native";
-import { theme } from "../../style/theme";
+import { ScrollView, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import styled from "styled-components/native";
+import { theme } from "../../style/theme";
 
 interface ResponsiveProps {
 	isSmall?: boolean;

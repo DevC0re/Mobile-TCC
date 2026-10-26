@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { Text, View } from "react-native";
 import { TagStyle } from "./style";
 
 export const InfoTag = () => {

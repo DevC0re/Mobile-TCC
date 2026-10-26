@@ -1,8 +1,15 @@
+import { useNavigation } from "@react-navigation/native";
+import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { useState } from "react";
 import { View } from "react-native";
 import { ButtonAuth } from "../../components/auth/authButton";
 import { Headerauth } from "../../components/auth/authheader";
 import { Input } from "../../components/auth/authInput";
+import { MessageErro } from "../../components/erroMsg";
 import { useBreakpoint } from "../../hooks/useBreakpoint";
+import { Scroll } from "../../style/global";
+import type { NavigationType } from "../../types/navigationType";
+import { validations } from "../../utils/validations";
 import {
 	ButtonSection,
 	Conteiner,
@@ -14,14 +21,6 @@ import {
 	TextPrivacidade,
 	Title,
 } from "./style";
-import { Scroll } from "../../style/global";
-import { useNavigation } from "@react-navigation/native";
-import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import type { NavigationType } from "../../types/navigationType";
-import { useState } from "react";
-import { validations } from "../../utils/validations";
-import { MessageErro } from "../../components/erroMsg";
-
 
 type NavigationProps = NativeStackNavigationProp<NavigationType, "Register">;
 

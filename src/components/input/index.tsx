@@ -1,6 +1,6 @@
+import { Search } from "lucide-react-native";
 import { TextInput, View } from "react-native";
 import { InputContainer, StyledInput } from "./style";
-import { Search } from "lucide-react-native";
 
 export const InputSearch = () => {
 	return (

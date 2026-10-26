@@ -1,29 +1,29 @@
+import { useNavigation } from "@react-navigation/native";
+import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { setItemAsync } from "expo-secure-store";
+import { useState } from "react";
+import { View } from "react-native";
+import { ButtonAuth } from "../../components/auth/authButton";
+import { Headerauth } from "../../components/auth/authheader";
+import { Input } from "../../components/auth/authInput";
+import { SsoButton } from "../../components/auth/ssoButton";
+import { MessageErro } from "../../components/erroMsg";
+import { useBreakpoint } from "../../hooks/useBreakpoint";
+import { Scroll } from "../../style/global";
+import type { NavigationType } from "../../types/navigationType";
 import {
 	ButtonSection,
 	Conteiner,
+	ContentWrapper,
 	ForgotPasswordContainer,
+	ForgotPasswordLink,
 	FormConteiner,
 	LoginForm,
 	Main,
-	Title,
 	TextHighlight,
 	TextPrivacidade,
-	ForgotPasswordLink,
-	ContentWrapper,
+	Title,
 } from "./style";
-import { View } from "react-native";
-import { Headerauth } from "../../components/auth/authheader";
-import { useBreakpoint } from "../../hooks/useBreakpoint";
-import { Input } from "../../components/auth/authInput";
-import { ButtonAuth } from "../../components/auth/authButton";
-import { SsoButton } from "../../components/auth/ssoButton";
-import { Scroll } from "../../style/global";
-import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import type { NavigationType } from "../../types/navigationType";
-import { useNavigation } from "@react-navigation/native";
-import { useState } from "react";
-import { MessageErro } from "../../components/erroMsg";
-import { setItemAsync } from "expo-secure-store";
 
 type NavigationProps = NativeStackNavigationProp<NavigationType, "Login">;
 

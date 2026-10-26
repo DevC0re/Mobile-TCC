@@ -1,5 +1,5 @@
+import { Text, View } from "react-native";
 import styled from "styled-components/native";
-import { View, Text } from "react-native";
 import { theme } from "../../style/theme";
 
 export const TextContainer = styled(View)`
