@@ -1,4 +1,4 @@
-import { Image, Text, View } from "react-native";
+import { Image, Pressable, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import styled from "styled-components/native";
 import { theme } from "../../style/theme";
@@ -11,7 +11,8 @@ export const Conteiner = styled(View)`
     background-color: ${theme.colors.skyBlue};
     flex: 1;
     height: 100%;
-    padding: 0 10px;
+    padding: 20px;
+	justify-content: space-between;
 `;
 
 export const Carduser = styled(View).attrs({
@@ -52,5 +53,18 @@ export const TextInfo = styled(Text)`
 `;
 
 export const TextButton = styled(Text)`
-	
-`
+	font-family: ${theme.fonts.semibold};
+	font-size: 16px;
+	color: ${theme.colors.redSurface};
+`;
+
+export const ButtonExit = styled(Pressable)`
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	gap: 12px;
+	padding: 12px;
+	background: ${theme.colors.dangerSurface};
+	border: 1px solid ${theme.colors.redSurface};
+	border-radius: 12px;
+`;

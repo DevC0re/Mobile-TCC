@@ -1,8 +1,8 @@
 import styled from "styled-components/native";
-import { View, Text } from "react-native";
+import { View, Text, Pressable } from "react-native";
 import { theme } from "../../../style/theme";
 
-export const Card = styled(View).attrs({
+export const Card = styled(Pressable).attrs({
 	style: {
 		boxShadow: "0 3px 10px 0 rgba(0, 0, 0, 0.25)",
 	},
@@ -12,9 +12,13 @@ export const Card = styled(View).attrs({
     padding: 18px 16px;
     gap: 12px;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     border-radius: 16px;
+	width: 100%;
     
+`;
+export const ConteineText = styled(View)`
+	width: 80%;
 `;
 
 export const TextTitle = styled(Text)`

@@ -1,15 +1,29 @@
-import { View, Text } from "react-native";
-import { ChevronRight, UserRoundCog } from "lucide-react-native";
-import {Card, TextDescription, TextTitle} from "./style";
+import { View } from "react-native";
+import { ChevronRight, type LucideIcon } from "lucide-react-native";
+import { Card, ConteineText, TextDescription, TextTitle } from "./style";
 
-export const CardProfileOptions = () => {
+interface CardProfileOptionsProps {
+	icon: LucideIcon;
+	title: string;
+	description: string;
+	onPress?: () => void;
+}
+
+export const CardProfileOptions = ({
+	icon: Icon,
+	title,
+	description,
+	onPress,
+}: CardProfileOptionsProps) => {
 	return (
-		<Card>
-			<UserRoundCog />
-			<View>
-				<TextTitle>Editar perfil</TextTitle>
-				<TextDescription>Atualize suas informações</TextDescription>
-			</View>
+		<Card onPress={onPress}>
+			<Icon />
+
+			<ConteineText>
+				<TextTitle>{title}</TextTitle>
+				<TextDescription>{description}</TextDescription>
+			</ConteineText>
+
 			<ChevronRight />
 		</Card>
 	);

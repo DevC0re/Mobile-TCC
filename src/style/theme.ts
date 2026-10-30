@@ -12,6 +12,8 @@ export const theme = {
 		Neutral800: "#1E293B",
 		redErro: "#D12E34",
 		Neutral400: "#94A3B8",
+		dangerSurface: "#FFF7F7",
+		redSurface: "#BD2525",
 	},
 	fonts: {
 		bold: "Poppins_700Bold",

@@ -1,4 +1,4 @@
-import { View , Pressable } from "react-native";
+import { View, Pressable } from "react-native";
 import phototest from "../../assets/./testphoto.png";
 import { Header } from "../../components/header";
 import { NavBar } from "../../components/navBar";
@@ -10,10 +10,12 @@ import {
 	TextInfo,
 	TextInfoContainer,
 	UserName,
-	TextButton
+	TextButton,
+	ButtonExit,
 } from "./style";
 import { SectionProfileOptions } from "../../components/sectionProfileOptions";
 import { LogOut } from "lucide-react-native";
+import { theme } from "../../style/theme";
 
 export const UserPage = () => {
 	return (
@@ -31,12 +33,10 @@ export const UserPage = () => {
 				</TextInfoContainer>
 				<SectionProfileOptions />
 				<View>
-					<Pressable>
-						<LogOut/>
-						<TextButton>
-							Sair da conta
-						</TextButton>
-					</Pressable>
+					<ButtonExit>
+						<LogOut color={theme.colors.redSurface} />
+						<TextButton>Sair da conta</TextButton>
+					</ButtonExit>
 				</View>
 			</Conteiner>
 			<NavBar activeUserPage={true} />

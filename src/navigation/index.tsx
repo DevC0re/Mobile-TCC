@@ -10,6 +10,7 @@ import { RegisterPage } from "../screens/registerPage";
 import { SearchPage } from "../screens/searchPage";
 import { UserPage } from "../screens/userPage";
 import type { NavigationType } from "../types/navigationType";
+import { EditPage } from "../screens/userPage/editPage";
 
 const Stack = createNativeStackNavigator<NavigationType>();
 
@@ -32,6 +33,8 @@ export const Routes = () => {
 				<Stack.Screen name="SearchPage" component={SearchPage} />
 
 				<Stack.Screen name="UserPage" component={UserPage} />
+
+				<Stack.Screen name="EditPage" component={EditPage} />
 			</Stack.Navigator>
 		</NavigationContainer>
 	);

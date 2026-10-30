@@ -7,4 +7,5 @@ export type NavigationType = {
 	HomePage: undefined;
 	SearchPage: undefined;
 	UserPage: undefined;
+	EditPage: undefined;
 };
