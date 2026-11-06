@@ -8,4 +8,6 @@ export type NavigationType = {
 	SearchPage: undefined;
 	UserPage: undefined;
 	EditPage: undefined;
+	AddressPage: undefined;
+	AddressPageAdd: undefined;
 };

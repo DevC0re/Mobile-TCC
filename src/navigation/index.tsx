@@ -11,6 +11,8 @@ import { SearchPage } from "../screens/searchPage";
 import { UserPage } from "../screens/userPage";
 import type { NavigationType } from "../types/navigationType";
 import { EditPage } from "../screens/userPage/editPage";
+import { AddressPage } from "../screens/userPage/addressPage";
+import {AddressPageAdd} from "../screens/userPage/addressPageAdd";
 
 const Stack = createNativeStackNavigator<NavigationType>();
 
@@ -35,6 +37,10 @@ export const Routes = () => {
 				<Stack.Screen name="UserPage" component={UserPage} />
 
 				<Stack.Screen name="EditPage" component={EditPage} />
+
+				<Stack.Screen name="AddressPage" component={AddressPage} />
+
+				<Stack.Screen name={"AddressPageAdd"} component={AddressPageAdd}/>
 			</Stack.Navigator>
 		</NavigationContainer>
 	);
