@@ -3,7 +3,6 @@ import Svg, { Path, Rect, type SvgProps } from "react-native-svg";
 
 const LogoMedup = (props: SvgProps) => (
 	<Svg
-		//xmlns="http://www.w3.org/2000/svg"
 		width={234}
 		height={234}
 		fill="none"

@@ -1,6 +1,6 @@
-import { ButtonStyle, TextButton } from "./style";
 import { useBreakpoint } from "../../../hooks/useBreakpoint";
 import { GoogleLogo } from "../../logoGoogle";
+import { ButtonStyle, TextButton } from "./style";
 
 export const SsoButton = () => {
 	const { isSmall } = useBreakpoint();

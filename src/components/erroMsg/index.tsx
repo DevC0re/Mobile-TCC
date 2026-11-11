@@ -1,7 +1,7 @@
-import { ErrorContainer, ErrorText } from "./style";
-import { theme } from "../../style/theme";
 import { Info } from "lucide-react-native";
 import { useBreakpoint } from "../../hooks/useBreakpoint";
+import { theme } from "../../style/theme";
+import { ErrorContainer, ErrorText } from "./style";
 
 interface erroprops {
 	errorText?: string;

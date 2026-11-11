@@ -1,3 +1,10 @@
+import { useState } from "react";
+import { View } from "react-native";
+import { ButtonAuth } from "../../components/auth/authButton";
+import { Headerauth } from "../../components/auth/authheader";
+import { Input } from "../../components/auth/authInput";
+import { MessageErro } from "../../components/erroMsg";
+import { useBreakpoint } from "../../hooks/useBreakpoint";
 import {
 	ButtonSectionAuth,
 	ConteinerAuth,
@@ -6,14 +13,7 @@ import {
 	Textinstruction,
 	TitleAuth,
 } from "../../style/global";
-import { Headerauth } from "../../components/auth/authheader";
-import { View } from "react-native";
 import { TextContainer } from "../accountVerificationPage/style";
-import { Input } from "../../components/auth/authInput";
-import { useState } from "react";
-import { ButtonAuth } from "../../components/auth/authButton";
-import { MessageErro } from "../../components/erroMsg";
-import { useBreakpoint } from "../../hooks/useBreakpoint";
 
 interface ErrorMessage {
 	password: string;
