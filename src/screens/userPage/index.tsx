@@ -1,4 +1,4 @@
-import { View, Pressable } from "react-native";
+import {View, Pressable, ScrollView} from "react-native";
 import phototest from "../../assets/./testphoto.png";
 import { Header } from "../../components/header";
 import { NavBar } from "../../components/navBar";
@@ -21,24 +21,27 @@ export const UserPage = () => {
 	return (
 		<Main>
 			<Header title={"Perfil"} />
-			<Conteiner>
-				<Carduser>
-					<PhotoUser source={phototest} />
+			<ScrollView showsVerticalScrollIndicator={false}>
+				<Conteiner>
+					<Carduser>
+						<PhotoUser source={phototest} />
+						<View>
+							<UserName>João da silva</UserName>
+						</View>
+					</Carduser>
+					<TextInfoContainer>
+						<TextInfo>Minha conta</TextInfo>
+					</TextInfoContainer>
+					<SectionProfileOptions />
 					<View>
-						<UserName>João da silva</UserName>
+						<ButtonExit>
+							<LogOut color={theme.colors.redSurface} />
+							<TextButton>Sair da conta</TextButton>
+						</ButtonExit>
 					</View>
-				</Carduser>
-				<TextInfoContainer>
-					<TextInfo>Minha conta</TextInfo>
-				</TextInfoContainer>
-				<SectionProfileOptions />
-				<View>
-					<ButtonExit>
-						<LogOut color={theme.colors.redSurface} />
-						<TextButton>Sair da conta</TextButton>
-					</ButtonExit>
-				</View>
-			</Conteiner>
+				</Conteiner>
+			</ScrollView>
+
 			<NavBar activeUserPage={true} />
 		</Main>
 	);

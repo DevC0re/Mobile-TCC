@@ -1,4 +1,4 @@
-import { MapPin, Pencil } from "lucide-react-native";
+import {MapPin, Pencil, Trash} from "lucide-react-native";
 
 import {
 	Container,
@@ -43,7 +43,8 @@ export const CardAddress = ({
 							accessibilityRole="button"
 							accessibilityLabel={`Editar endereço ${title}`}
 						>
-							<Pencil size={27} color="#19344E" />
+
+							<Trash size={27} color="#19344E" />
 						</EditButton>
 					</TitleRow>
 

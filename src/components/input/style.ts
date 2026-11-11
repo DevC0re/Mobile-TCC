@@ -15,7 +15,7 @@ export const InputContainer = styled(View)`
 
 export const StyledInput = styled(TextInput)`
     font-family: ${theme.fonts.medium};
-    font-size: 20px;
+    font-size: 16px;
     flex: 1;
     padding: 0 ;
 `;

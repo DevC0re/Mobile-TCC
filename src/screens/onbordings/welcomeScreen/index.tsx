@@ -1,6 +1,5 @@
 import { Text, TouchableOpacity, View } from "react-native";
 import { ButtonOnBordings } from "../../../components/buttonOnbordings";
-import Logo from "../../../components/logo";
 import {
 	Conteiner,
 	Main,
@@ -9,13 +8,14 @@ import {
 	Title,
 	WrapperText,
 } from "./style";
+import LogoMedup from "../../../components/logo";
 
 export const Welcome = () => {
 	return (
 		<Main>
 			<Conteiner>
 				<Title>MedUp</Title>
-				<Logo />
+				<LogoMedup />
 				<WrapperText>
 					<Subtitle>Bem-vindo ao MedUp!</Subtitle>
 					<Textconteiner>

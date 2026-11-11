@@ -13,6 +13,7 @@ export const Conteiner = styled(View)`
     height: 100%;
     padding: 20px;
 	justify-content: space-between;
+	gap: 10px
 `;
 
 export const Carduser = styled(View).attrs({

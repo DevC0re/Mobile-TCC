@@ -1,4 +1,4 @@
-import { Text, View } from "react-native";
+import { Text, View, Pressable } from "react-native";
 import styled from "styled-components/native";
 import { theme } from "../../../style/theme";
 
@@ -17,7 +17,7 @@ export const CardFilterText = styled(Text)`
     text-align: center;
 `;
 
-export const CardStyle = styled(View)`
+export const CardStyle = styled(Pressable)`
     gap: 5px;
     align-items: center;
     padding: 5px 10px ;

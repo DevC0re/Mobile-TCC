@@ -43,12 +43,14 @@ export const SectionProfileOptions = () => {
 				icon={Heart}
 				title="Favoritos"
 				description="Hospitais que você salvou"
+        onPress={() => navigation.navigate("FavoritesPage")}
 			/>
 
 			<CardProfileOptions
 				icon={ShieldPlus}
 				title="Meus convênios"
 				description="Seus planos de saúde"
+        onPress={() => navigation.navigate("InsurancePlans")}
 			/>
 		</SectionCardOptions>
 	);

@@ -14,6 +14,16 @@ import { EditPage } from "../screens/userPage/editPage";
 import { AddressPage } from "../screens/userPage/addressPage";
 import {AddressPageAdd} from "../screens/userPage/addressPageAdd";
 
+import { HospitalProfilePage } from "../screens/medupFlow/HospitalProfilePage";
+import { HospitalReviewsPage } from "../screens/medupFlow/HospitalReviewsPage";
+import { HospitalRatingPage } from "../screens/medupFlow/HospitalRatingPage";
+import { ReviewReportPage } from "../screens/medupFlow/ReviewReportPage";
+import { InsurancePlansPage } from "../screens/medupFlow/InsurancePlansPage";
+import { InsuranceHospitalsPage } from "../screens/medupFlow/InsuranceHospitalsPage";
+import { FavoritesPage } from "../screens/medupFlow/FavoritesPage";
+
+import { ReviewDetailsPage } from "../screens/medupFlow/ReviewDetailsPage";
+
 const Stack = createNativeStackNavigator<NavigationType>();
 
 export const Routes = () => {
@@ -41,6 +51,15 @@ export const Routes = () => {
 				<Stack.Screen name="AddressPage" component={AddressPage} />
 
 				<Stack.Screen name={"AddressPageAdd"} component={AddressPageAdd}/>
+
+        <Stack.Screen name="HospitalProfile" component={HospitalProfilePage} />
+        <Stack.Screen name="ReviewDetails" component={ReviewDetailsPage} />
+        <Stack.Screen name="HospitalReviews" component={HospitalReviewsPage} />
+        <Stack.Screen name="HospitalRating" component={HospitalRatingPage} />
+        <Stack.Screen name="ReviewReport" component={ReviewReportPage} />
+        <Stack.Screen name="InsurancePlans" component={InsurancePlansPage} />
+        <Stack.Screen name="InsuranceHospitals" component={InsuranceHospitalsPage} />
+        <Stack.Screen name="FavoritesPage" component={FavoritesPage} />
 			</Stack.Navigator>
 		</NavigationContainer>
 	);

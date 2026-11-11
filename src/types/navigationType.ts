@@ -10,4 +10,12 @@ export type NavigationType = {
 	EditPage: undefined;
 	AddressPage: undefined;
 	AddressPageAdd: undefined;
+  HospitalProfile: { hospitalId: string };
+  ReviewDetails: { reviewId: string };
+  HospitalReviews: { hospitalId: string };
+  HospitalRating: { hospitalId: string };
+  ReviewReport: { hospitalId: string; scores: import("../features/medupDemo/data").RatingScores; overall: number };
+  InsurancePlans: undefined;
+  InsuranceHospitals: { insuranceId: string };
+  FavoritesPage: undefined;
 };

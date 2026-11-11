@@ -1,54 +1,61 @@
-// Importe do 'lucide-react-native' se estiver usando React Native/Expo,
-// ou mantenha 'lucide-react' se for React para Web.
 import {
-	Baby,
-	Bone,
-	Brain,
-	Eye,
-	Heart,
-	type LucideIcon,
-	Salad,
-	Sparkles,
+  Baby,
+  Bone,
+  Brain,
+  Eye,
+  Heart,
+  Salad,
+  Sparkles,
+  Stethoscope,
+  UsersRound,
+  type LucideIcon,
 } from "lucide-react-native";
+import {
+  SPECIALTY_FILTERS,
+  type SpecialtyFilterId,
+} from "../../features/medupDemo/hospitalSearch";
 import { CardFilter } from "./cardFilter";
 import { SectionFilterScroll } from "./style";
 
-interface Especialidade {
-	id: string;
-	nome: string;
-	icone: LucideIcon;
+const icons: Record<SpecialtyFilterId, LucideIcon> = {
+  cardiologia: Heart,
+  dermatologia: Sparkles,
+  pediatria: Baby,
+  nutricao: Salad,
+  neurologia: Brain,
+  oftalmologia: Eye,
+  ortopedia: Bone,
+  "clinico-geral": Stethoscope,
+  geriatria: UsersRound,
+};
+
+interface SectionFilterProps {
+  selectedSpecialties: readonly SpecialtyFilterId[];
+  onToggleSpecialty: (specialty: SpecialtyFilterId) => void;
 }
 
-const especialidades: Especialidade[] = [
-	{ id: "cardiologista", nome: "Cardiologista", icone: Heart },
-	{ id: "dermatologista", nome: "Dermatologista", icone: Sparkles },
-	{ id: "pediatra", nome: "Pediatra", icone: Baby },
-	{ id: "nutricionista", nome: "Nutricionista", icone: Salad },
-	{ id: "neurologista", nome: "Neurologista", icone: Brain },
-	{ id: "oftalmologista", nome: "Oftalmologista", icone: Eye },
-	{ id: "ortopedista", nome: "Ortopedista", icone: Bone },
-];
+export const SectionFilter = ({
+  selectedSpecialties,
+  onToggleSpecialty,
+}: SectionFilterProps) => (
+  <SectionFilterScroll
+    horizontal
+    nestedScrollEnabled
+    showsHorizontalScrollIndicator={false}
+  >
+    {SPECIALTY_FILTERS.map((specialty) => {
+      const Icon = icons[specialty.id];
+      const selected = selectedSpecialties.includes(specialty.id);
 
-export const SectionFilter = () => {
-	return (
-		<SectionFilterScroll
-			horizontal={true}
-			showsHorizontalScrollIndicator={false}
-		>
-			{especialidades.map((especialidade) => {
-				// Passamos o componente do ícone para uma variável com letra maiúscula
-				// para que o React o reconheça como um componente válido
-				const Icone = especialidade.icone;
-
-				return (
-					<CardFilter
-						key={especialidade.id}
-						// Renderiza o ícone e pode passar props de cor e tamanho aqui se necessário
-						icon={<Icone />}
-						text={especialidade.nome}
-					/>
-				);
-			})}
-		</SectionFilterScroll>
-	);
-};
+      return (
+        <CardFilter
+          key={specialty.id}
+          icon={<Icon />}
+          text={specialty.label}
+          selected={selected}
+          onPress={() => onToggleSpecialty(specialty.id)}
+        />
+      );
+    })}
+  </SectionFilterScroll>
+);

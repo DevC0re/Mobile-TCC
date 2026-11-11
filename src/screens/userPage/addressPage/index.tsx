@@ -29,6 +29,7 @@ export const AddressPage = () => {
                        city="São Paulo"
                        state="SP"
                        isPrincipal={true}
+
                    />
 
                    <CardAddress

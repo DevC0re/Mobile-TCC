@@ -8,6 +8,7 @@ import {
 } from "@expo-google-fonts/poppins";
 
 import { Routes } from "./navigation";
+import { DemoProvider } from "./features/medupDemo/DemoContext";
 
 export default function App() {
 	const [fontsLoaded] = useFonts({
@@ -22,5 +23,5 @@ export default function App() {
 		return null;
 	}
 
-	return <Routes />;
+	return <DemoProvider><Routes /></DemoProvider>;
 }
