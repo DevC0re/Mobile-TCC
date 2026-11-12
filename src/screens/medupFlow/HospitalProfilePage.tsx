@@ -9,7 +9,8 @@ import {
   SmallButtonRow, SoftButton, SoftButtonText, Subheading, WhiteCard,
 } from "../../components/medupFlow/style";
 import { useMedupDemo } from "../../features/medupDemo/DemoContext";
-import { getHospital, getHospitalWithReviews } from "../../features/medupDemo/data";
+import { getHospitalWithReviews } from "../../features/medupDemo/data";
+import { useHospitals } from "../../features/hospitals/HospitalsContext";
 import { theme } from "../../style/theme";
 import type { NavigationType } from "../../types/navigationType";
 import { HeaderRow, IconPressable, LargeHospitalImage } from "./style";
@@ -20,9 +21,13 @@ export const HospitalProfilePage = () => {
   const { params } = useRoute<RouteProp<NavigationType, "HospitalProfile">>();
   const navigation = useNavigation<Nav>();
   const { reviews: allReviews } = useMedupDemo();
-  const hospital = getHospitalWithReviews(getHospital(params.hospitalId), allReviews);
+  const { findHospital } = useHospitals();
+  const found = findHospital(params.hospitalId);
+  const hospital = found ? getHospitalWithReviews(found, allReviews) : undefined;
   const { favorites, toggleFavorite } = useMedupDemo();
-  const favorite = favorites.includes(hospital.id);
+  const favorite = hospital ? favorites.includes(hospital.id) : false;
+
+  if (!hospital) return <ScreenLayout title="Perfil do hospital"><BodyText>Hospital não encontrado. Atualize a lista na Home.</BodyText></ScreenLayout>;
 
   const openDirections = async () => {
     const query = encodeURIComponent(`${hospital.name}, ${hospital.city}`);
@@ -35,7 +40,7 @@ export const HospitalProfilePage = () => {
 
   const callHospital = async () => {
     if (!hospital.phone) {
-      Alert.alert("Telefone indisponível", "O telefone não está cadastrado nesta demonstração.");
+      Alert.alert("Telefone indisponível", "O telefone não está cadastrado no servidor.");
       return;
     }
     try {
@@ -64,7 +69,7 @@ export const HospitalProfilePage = () => {
           onPress={() => navigation.navigate("HospitalReviews", { hospitalId: hospital.id })}
         >
           <Star size={15} color={theme.colors.navy} fill={theme.colors.navy} />
-          <Subheading>{hospital.rating.toFixed(1).replace(".", ",")} ({hospital.reviewCount.toLocaleString("pt-BR")} avaliações)</Subheading>
+          <Subheading>{hospital.reviewCount ? `${hospital.rating.toFixed(1).replace(".", ",")} (${hospital.reviewCount} avaliações)` : "Avaliações indisponíveis"}</Subheading>
         </IconPressable>
         <SmallButtonRow>
           <SoftButton onPress={openDirections}><SoftButtonText>Como chegar</SoftButtonText></SoftButton>
@@ -87,7 +92,7 @@ export const HospitalProfilePage = () => {
           <Plus size={23} color={theme.colors.teal} />
           <FlexContent>
             <Subheading>Especialidades</Subheading>
-            <BodyText>{hospital.specialties.join(", ")}.</BodyText>
+            <BodyText>{hospital.specialties.length ? hospital.specialties.join(", ") : "Não informadas pelo servidor."}</BodyText>
           </FlexContent>
         </CardRow>
       </WhiteCard>
@@ -96,7 +101,7 @@ export const HospitalProfilePage = () => {
           <ShieldPlus size={23} color={theme.colors.teal} />
           <FlexContent>
             <Subheading>Convênios aceitos</Subheading>
-            <BodyText>{hospital.insurances.join(", ")}.</BodyText>
+            <BodyText>{hospital.insurances.length ? hospital.insurances.join(", ") : "Não informados pelo servidor."}</BodyText>
           </FlexContent>
         </CardRow>
       </WhiteCard>
@@ -105,8 +110,8 @@ export const HospitalProfilePage = () => {
           <Syringe size={23} color={theme.colors.teal} />
           <Subheading>Vacinas</Subheading>
         </CardRow>
-        <BodyText>{hospital.vaccines?.length ? hospital.vaccines.join(" • ") : "Nenhuma vacina informada."}</BodyText>
-        <BodyText>Informadas por usuários. Confirme a disponibilidade com a unidade.</BodyText>
+        <BodyText>{hospital.vaccines?.length ? hospital.vaccines.join(" • ") : "Vacinas não informadas pelo servidor."}</BodyText>
+        <BodyText>Confirme a disponibilidade de vacinas diretamente com a unidade.</BodyText>
       </WhiteCard>
       <Button title="Ver avaliações" outlined onPress={() => navigation.navigate("HospitalReviews", { hospitalId: hospital.id })} />
     </ScreenLayout>

@@ -69,3 +69,13 @@ export const ButtonExit = styled(Pressable)`
 	border: 1px solid ${theme.colors.redSurface};
 	border-radius: 12px;
 `;
+
+export const PhotoPlaceholder = styled(View)`
+    width: 150px;
+    height: 150px;
+    border-radius: 170px;
+    border: 1px solid ${theme.colors.black};
+    background-color: ${theme.colors.beige};
+    align-items: center;
+    justify-content: center;
+`;

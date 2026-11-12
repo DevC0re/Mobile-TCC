@@ -1,5 +1,4 @@
-import {View, Pressable, ScrollView} from "react-native";
-import phototest from "../../assets/./testphoto.png";
+import { Alert, ScrollView, View } from "react-native";
 import { Header } from "../../components/header";
 import { NavBar } from "../../components/navBar";
 import {
@@ -11,22 +10,40 @@ import {
 	TextInfoContainer,
 	UserName,
 	TextButton,
-	ButtonExit,
+	ButtonExit, PhotoPlaceholder,
 } from "./style";
 import { SectionProfileOptions } from "../../components/sectionProfileOptions";
-import { LogOut } from "lucide-react-native";
+import { LogOut, UserRound } from "lucide-react-native";
 import { theme } from "../../style/theme";
+import { useAuth } from "../../features/auth/AuthContext";
+import { useNavigation } from "@react-navigation/native";
+import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import type { NavigationType } from "../../types/navigationType";
 
 export const UserPage = () => {
+  const { user, photoUri, signOut } = useAuth();
+  const navigation = useNavigation<NativeStackNavigationProp<NavigationType>>();
+  const logout = async () => {
+    try {
+      await signOut();
+      navigation.reset({ index: 0, routes: [{ name: "Login" }] });
+    } catch {
+      Alert.alert("Erro", "Não foi possível encerrar sua sessão.");
+    }
+  };
 	return (
 		<Main>
 			<Header title={"Perfil"} />
 			<ScrollView showsVerticalScrollIndicator={false}>
 				<Conteiner>
 					<Carduser>
-						<PhotoUser source={phototest} />
+						{photoUri ? (
+              <PhotoUser source={{ uri: photoUri }} />
+            ) : (
+              <PhotoPlaceholder><UserRound size={64} color={theme.colors.navy} /></PhotoPlaceholder>
+            )}
 						<View>
-							<UserName>João da silva</UserName>
+							<UserName>{user?.name ?? "Usuário"}</UserName>
 						</View>
 					</Carduser>
 					<TextInfoContainer>
@@ -34,7 +51,7 @@ export const UserPage = () => {
 					</TextInfoContainer>
 					<SectionProfileOptions />
 					<View>
-						<ButtonExit>
+						<ButtonExit onPress={logout}>
 							<LogOut color={theme.colors.redSurface} />
 							<TextButton>Sair da conta</TextButton>
 						</ButtonExit>

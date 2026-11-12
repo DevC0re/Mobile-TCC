@@ -1,7 +1,7 @@
 import type { ImageSourcePropType } from "react-native";
 import demoHospitalImage from "../../assets/img.png";
 
-export type HospitalId = "santa-clara" | "vita-saude" | "sao-lucas" | "bem-viver";
+export type HospitalId = string;
 
 export interface HospitalInfo {
   id: HospitalId;

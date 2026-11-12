@@ -2,14 +2,12 @@ import { useRef, useState } from "react";
 import { useNavigation, useRoute, type RouteProp } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { Camera, ImagePlus, X } from "lucide-react-native";
-import * as ImagePicker from "expo-image-picker";
 import { Alert, Keyboard, ScrollView } from "react-native";
 import { Button } from "../../components/button";
 import { CardHospital } from "../../components/cardHospital";
 import { ScreenLayout } from "../../components/medupFlow/ScreenLayout";
 import { BodyText, CaptionText, CardRow, FlexContent, Heading, Subheading, WhiteCard } from "../../components/medupFlow/style";
-import { useMedupDemo } from "../../features/medupDemo/DemoContext";
-import { getHospital } from "../../features/medupDemo/data";
+import { useHospitals } from "../../features/hospitals/HospitalsContext";
 import { theme } from "../../style/theme";
 import type { NavigationType } from "../../types/navigationType";
 import { CommentInput, IconPressable, PhotoPicker, PreviewImage } from "./style";
@@ -19,47 +17,19 @@ type Nav = NativeStackNavigationProp<NavigationType>;
 export const ReviewReportPage = () => {
   const { params } = useRoute<RouteProp<NavigationType, "ReviewReport">>();
   const navigation = useNavigation<Nav>();
-  const hospital = getHospital(params.hospitalId);
-  const { addReview } = useMedupDemo();
+  const { findHospital } = useHospitals();
+  const hospital = findHospital(params.hospitalId);
   const [comment, setComment] = useState("");
   const [photoUri, setPhotoUri] = useState<string | null>(null);
   const scrollRef = useRef<ScrollView>(null);
 
+  // O servidor ainda não oferece publicação de avaliações vinculadas a hospitais.
+  // Mantemos o layout para evolução futura, sem simular um envio bem-sucedido.
   const choosePhoto = async () => {
-    try {
-      const result = await ImagePicker.launchImageLibraryAsync({
-        mediaTypes: ["images"],
-        allowsEditing: false,
-        quality: 0.8,
-      });
-      if (!result.canceled && result.assets[0]?.uri) setPhotoUri(result.assets[0].uri);
-    } catch {
-      Alert.alert("Erro ao selecionar imagem", "Não foi possível abrir a galeria.");
-    }
+    Alert.alert("Anexo indisponível", "O servidor ainda não permite enviar fotos de avaliações.");
   };
 
-  const publish = () => {
-    const clean = comment.trim();
-    if (clean.length < 10) {
-      Alert.alert("Conte mais sobre sua experiência", "Escreva pelo menos 10 caracteres no relato.");
-      return;
-    }
-    addReview({
-      id: `local-${Date.now()}`,
-      hospitalId: hospital.id,
-      author: "Você",
-      date: new Date().toLocaleDateString("pt-BR"),
-      scores: params.scores,
-      overall: params.overall,
-      comment: clean,
-      photoUri: photoUri ?? undefined,
-    });
-    Keyboard.dismiss();
-    Alert.alert("Avaliação publicada", "Seu relato foi adicionado nesta demonstração. Para publicar no servidor, será necessário conectar a API.", [
-      { text: "Ver avaliações", onPress: () => navigation.navigate("HospitalReviews", { hospitalId: hospital.id }) },
-    ]);
-  };
-
+  if (!hospital) return <ScreenLayout title="Seu relato"><BodyText>Hospital não encontrado.</BodyText></ScreenLayout>;
   return (
     <ScreenLayout title="Seu relato" scrollRef={scrollRef}>
       <CardHospital hospital={hospital} showFavorite={false} />
@@ -98,9 +68,9 @@ export const ReviewReportPage = () => {
             <Subheading style={{ color: theme.colors.teal }}>Selecionar imagem</Subheading>
           </PhotoPicker>
         )}
-        <CaptionText>Anexe uma foto para complementar seu relato.</CaptionText>
+        <CaptionText>Fotos de avaliações ainda não podem ser enviadas ao servidor.</CaptionText>
       </WhiteCard>
-      <Button title="Publicar avaliação" onPress={publish} />
+      <Button title="Publicação indisponível" disabled />
       <Button title="Voltar" outlined onPress={() => navigation.goBack()} />
     </ScreenLayout>
   );

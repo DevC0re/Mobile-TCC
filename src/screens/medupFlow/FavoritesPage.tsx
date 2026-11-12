@@ -2,11 +2,12 @@ import { CardHospital } from "../../components/cardHospital";
 import { ScreenLayout } from "../../components/medupFlow/ScreenLayout";
 import { BodyText, SectionSpace, WhiteCard } from "../../components/medupFlow/style";
 import { useMedupDemo } from "../../features/medupDemo/DemoContext";
-import { HOSPITALS } from "../../features/medupDemo/data";
+import { useHospitals } from "../../features/hospitals/HospitalsContext";
 
 export const FavoritesPage = () => {
   const { favorites } = useMedupDemo();
-  const hospitals = HOSPITALS.filter((hospital) => favorites.includes(hospital.id));
+  const { hospitals: allHospitals } = useHospitals();
+  const hospitals = allHospitals.filter((hospital) => favorites.includes(hospital.id));
 
   return (
     <ScreenLayout title="Favoritos" navbar>

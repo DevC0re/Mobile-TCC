@@ -38,7 +38,7 @@ export const InsurancePlansPage = () => {
   return (
     <>
       <ScreenLayout title="Meus convênios" navbar>
-        <CaptionText>Gerencie seus planos de saúde.</CaptionText>
+        <CaptionText>Seus convênios são uma seleção local nesta versão, ainda não vinculada à sua conta no servidor.</CaptionText>
         <InsuranceNotice />
         <SectionSpace>
           {insurances.map((id) => (

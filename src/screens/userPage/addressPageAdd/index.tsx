@@ -44,7 +44,11 @@ import {
     Hint,
     SubmitArea,
 } from "./style";
-import {saveAddressToApi} from "../../../services/addressService";
+import { saveAddressToApi, atualizarEndereco, buscarEndereco } from "../../../services/addressService";
+import { getApiErrorMessage } from "../../../services/apiError";
+import { useNavigation, useRoute, type RouteProp } from "@react-navigation/native";
+import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import type { NavigationType } from "../../../types/navigationType";
 import {theme} from "../../../style/theme";
 
 interface AddressPageProps {
@@ -58,6 +62,10 @@ export const AddressPageAdd = ({
                                 initialAddress,
                                 onSave,
                             }: AddressPageProps) => {
+    const navigation = useNavigation<NativeStackNavigationProp<NavigationType>>();
+    const route = useRoute<RouteProp<NavigationType, "AddressPageAdd">>();
+    const addressId = route.params?.addressId;
+
     const [address, setAddress] =
         useState<AddressFormData>({
             ...emptyAddress,
@@ -86,6 +94,27 @@ export const AddressPageAdd = ({
     const [saving, setSaving] = useState(false);
     const [keyboardVisible, setKeyboardVisible] =
         useState(false);
+
+    useEffect(() => {
+      if (!addressId) return;
+      let mounted = true;
+      buscarEndereco(addressId).then((saved) => {
+        if (!mounted) return;
+        setAddress({
+          cep: formatCep(saved.cep),
+          rua: saved.logradouro,
+          numero: saved.numero,
+          complemento: saved.complemento ?? "",
+          bairro: saved.bairro,
+          cidade: saved.cidade,
+          uf: saved.estado,
+        });
+        if (saved.latitude != null && saved.longitude != null) {
+          setCoordinates({latitude: saved.latitude, longitude: saved.longitude});
+        }
+      }).catch((error) => Alert.alert("Erro ao carregar endereço", getApiErrorMessage(error)));
+      return () => { mounted = false; };
+    }, [addressId]);
 
     const scrollRef = useRef<ScrollView>(null);
 
@@ -374,18 +403,15 @@ export const AddressPageAdd = ({
         setSaving(true);
 
         try {
-            await (onSave ?? saveAddressToApi)(payload);
-
-            Alert.alert(
-                "Endereço salvo",
-                "Seu endereço foi enviado com sucesso."
-            );
+            if (onSave) await onSave(payload);
+            else if (addressId) await atualizarEndereco(addressId, payload);
+            else await saveAddressToApi(payload);
+            Alert.alert("Endereço salvo", "Seu endereço foi salvo com sucesso.");
+            navigation.goBack();
         } catch (error) {
             Alert.alert(
                 "Não foi possível salvar",
-                error instanceof Error
-                    ? error.message
-                    : "Tente novamente."
+                getApiErrorMessage(error, "Tente novamente.")
             );
         } finally {
             setSaving(false);
@@ -394,7 +420,7 @@ export const AddressPageAdd = ({
 
     return (
         <Main>
-            <Header title="Meu endereço" />
+            <Header title={addressId ? "Editar endereço" : "Novo endereço"} />
 
             <KeyboardAvoidingView
                 style={{ flex: 1 }}

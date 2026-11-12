@@ -1,11 +1,12 @@
 import { CardHospital } from "../cardHospital";
 import { SectionCard } from "./style";
-import { HOSPITALS } from "../../features/medupDemo/data";
+import { useHospitals } from "../../features/hospitals/HospitalsContext";
 
-export const SectionCardHospital = () => (
-  <SectionCard>
-    {HOSPITALS.map((hospital) => (
+export const SectionCardHospital = () => {
+  const { hospitals } = useHospitals();
+  return <SectionCard>
+    {hospitals.map((hospital) => (
       <CardHospital key={hospital.id} hospital={hospital} />
     ))}
-  </SectionCard>
-);
+  </SectionCard>;
+};

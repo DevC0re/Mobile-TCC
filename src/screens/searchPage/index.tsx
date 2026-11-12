@@ -8,7 +8,7 @@ import { NavBar } from "../../components/navBar";
 import { SectionFilter } from "../../components/sectionFilter";
 import { CardHospital } from "../../components/cardHospital";
 import { BodyText, Subheading } from "../../components/medupFlow/style";
-import { HOSPITALS } from "../../features/medupDemo/data";
+import { useHospitals } from "../../features/hospitals/HospitalsContext";
 import {
   filterHospitals,
   SPECIALTY_FILTERS,
@@ -29,13 +29,14 @@ type Nav = NativeStackNavigationProp<NavigationType>;
 
 export const SearchPage = () => {
   const navigation = useNavigation<Nav>();
+  const { hospitals, loading, error, refresh } = useHospitals();
   const [search, setSearch] = useState("");
   const [selectedSpecialties, setSelectedSpecialties] =
     useState<SpecialtyFilterId[]>([]);
 
   const filtered = useMemo(
-    () => filterHospitals(HOSPITALS, search, selectedSpecialties),
-    [search, selectedSpecialties],
+    () => filterHospitals(hospitals, search, selectedSpecialties),
+    [hospitals, search, selectedSpecialties],
   );
 
   const toggleSpecialty = (id: SpecialtyFilterId) => {
@@ -83,6 +84,9 @@ export const SearchPage = () => {
           onToggleSpecialty={toggleSpecialty}
         />
 
+        {loading && <BodyText>Carregando hospitais...</BodyText>}
+        {!!error && <BodyText onPress={() => void refresh()}>{error} Toque para tentar novamente.</BodyText>}
+        {selectedSpecialties.length > 0 && <FilterHelp>Os hospitais ainda não possuem especialidades vinculadas na resposta da API; esse filtro depende de dados do back-end.</FilterHelp>}
         <ResultsHeader>
           <Subheading>
             Hospitais encontrados ({filtered.length})
@@ -109,7 +113,7 @@ export const SearchPage = () => {
           />
         ))}
 
-        {filtered.length === 0 && (
+        {!loading && !error && filtered.length === 0 && (
           <EmptyResults>
             <BodyText>
               Nenhum hospital encontrado com essa pesquisa e essas especialidades.

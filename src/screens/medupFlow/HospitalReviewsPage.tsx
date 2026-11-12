@@ -6,7 +6,8 @@ import { ScreenLayout } from "../../components/medupFlow/ScreenLayout";
 import { StarRating } from "../../components/medupFlow/StarRating";
 import { BodyText, CaptionText, Heading, SectionSpace, Subheading, WhiteCard } from "../../components/medupFlow/style";
 import { useMedupDemo } from "../../features/medupDemo/DemoContext";
-import { getHospital, getHospitalWithReviews } from "../../features/medupDemo/data";
+import { getHospitalWithReviews } from "../../features/medupDemo/data";
+import { useHospitals } from "../../features/hospitals/HospitalsContext";
 import type { NavigationType } from "../../types/navigationType";
 
 type Nav = NativeStackNavigationProp<NavigationType>;
@@ -15,23 +16,24 @@ export const HospitalReviewsPage = () => {
   const { params } = useRoute<RouteProp<NavigationType, "HospitalReviews">>();
   const navigation = useNavigation<Nav>();
   const { reviews: allReviews } = useMedupDemo();
-  const hospital = getHospitalWithReviews(getHospital(params.hospitalId), allReviews);
+  const { findHospital } = useHospitals();
+  const found = findHospital(params.hospitalId);
+  const hospital = found ? getHospitalWithReviews(found, allReviews) : undefined;
   const { reviews } = useMedupDemo();
-  const hospitalReviews = reviews.filter((review) => review.hospitalId === hospital.id);
+  const hospitalReviews = reviews.filter((review) => review.hospitalId === params.hospitalId);
+  if (!hospital) return <ScreenLayout title="Avaliações"><BodyText>Hospital não encontrado.</BodyText></ScreenLayout>;
 
 
   return (
     <ScreenLayout title="Avaliações">
       <WhiteCard>
-        <Heading>{hospital.rating.toFixed(1).replace(".", ",")} de 5</Heading>
-        <StarRating value={hospital.rating} size={21} />
-        <CaptionText>{hospital.reviewCount.toLocaleString("pt-BR")} avaliações</CaptionText>
-        <Button title="Avaliar hospital" onPress={() => navigation.navigate("HospitalRating", { hospitalId: hospital.id })} />
+        <Heading>Avaliações indisponíveis</Heading>
+        <BodyText>A publicação e listagem de avaliações de hospitais ainda dependem de endpoints associados ao hospital no back-end.</BodyText>
       </WhiteCard>
       <SectionSpace>
         {hospitalReviews.length === 0 && (
           <WhiteCard>
-            <BodyText>Ainda não existem relatos nesta demonstração. Compartilhe sua experiência.</BodyText>
+            <BodyText>Ainda não há avaliações disponíveis pela API.</BodyText>
           </WhiteCard>
         )}
         {hospitalReviews.map((review) => (

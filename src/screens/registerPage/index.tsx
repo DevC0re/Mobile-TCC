@@ -2,6 +2,8 @@ import { useNavigation } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { useState } from "react";
 import { View } from "react-native";
+import { criarUsuario } from "../../services/usuarioService";
+import { getApiErrorMessage } from "../../services/apiError";
 import { ButtonAuth } from "../../components/auth/authButton";
 import { Headerauth } from "../../components/auth/authheader";
 import { Input } from "../../components/auth/authInput";
@@ -109,10 +111,10 @@ export const RegisterPage = () => {
 			}));
 			setErrors((erro) => ({ ...erro, password: true }));
 			hasErrors = true;
-		} else if (formData.password.length < 6) {
+		} else if (formData.password.length < 8 || formData.password.length > 16) {
 			setEformData((errotext) => ({
 				...errotext,
-				password: "Sua senha precisa ter no minimo 6 caracteres",
+				password: "A senha deve ter de 8 a 16 caracteres",
 			}));
 			setErrors((erro) => ({ ...erro, password: true }));
 			hasErrors = true;
@@ -146,7 +148,13 @@ export const RegisterPage = () => {
 				email: formData.email,
 				password: formData.password,
 			};
-			// Falta a implementação do método de criação de usuário do back-end.
+      try {
+        await criarUsuario(user);
+        navigation.navigate("VerifyAccount", { email: user.email.trim().toLowerCase() });
+      } catch (error) {
+        setErrors((previous) => ({ ...previous, email: true }));
+        setEformData((previous) => ({ ...previous, email: getApiErrorMessage(error, "Cadastro não realizado.") }));
+      }
 		}
 		setLoading(false);
 	};
@@ -192,7 +200,7 @@ export const RegisterPage = () => {
 
 								<Input
 									label={"Senha:"}
-									textplace={" Sua senha Deve conter 6 caracteres."}
+									textplace={" Senha de 8 a 16 caracteres."}
 									password
 									autocapitalize={"none"}
 									value={formData.password}
@@ -233,7 +241,7 @@ export const RegisterPage = () => {
 						<ButtonAuth
 							onPress={handleCreateuser}
 							text={"Criar nova conta"}
-							disabled={false}
+							disabled={loading}
 						/>
 
 						<View>

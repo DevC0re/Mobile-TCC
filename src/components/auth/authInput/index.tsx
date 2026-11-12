@@ -12,6 +12,8 @@ interface IProps {
 	error?: boolean;
 	value?: string;
 	onChangeText?: (text: string) => void;
+  editable?: boolean;
+  keyboardType?: "default" | "number-pad" | "email-address";
 }
 
 export const Input = ({
@@ -22,6 +24,8 @@ export const Input = ({
 	error,
 	value,
 	onChangeText,
+  editable = true,
+  keyboardType = "default",
 }: IProps) => {
 	const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
@@ -41,6 +45,8 @@ export const Input = ({
 					autoCapitalize={autocapitalize}
 					value={value}
 					onChangeText={onChangeText}
+          editable={editable}
+          keyboardType={keyboardType}
 				/>
 				{password && (
 					<Pressable onPress={togglePasswordVisibility}>

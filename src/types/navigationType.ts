@@ -2,14 +2,14 @@ export type NavigationType = {
 	Login: undefined;
 	Register: undefined;
 	RecoveryPassword: undefined;
-	VerifyAccount: undefined;
+	VerifyAccount: { email: string };
 	NewPassword: undefined;
 	HomePage: undefined;
 	SearchPage: undefined;
 	UserPage: undefined;
 	EditPage: undefined;
 	AddressPage: undefined;
-	AddressPageAdd: undefined;
+	AddressPageAdd: { addressId?: string } | undefined;
   HospitalProfile: { hospitalId: string };
   ReviewDetails: { reviewId: string };
   HospitalReviews: { hospitalId: string };

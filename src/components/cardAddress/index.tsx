@@ -1,4 +1,5 @@
 import {MapPin, Pencil, Trash} from "lucide-react-native";
+import { Pressable, Text, View } from "react-native";
 
 import {
 	Container,
@@ -19,6 +20,8 @@ interface CardAddressProps {
 	state: string;
 	isPrincipal?: boolean;
 	onPressEdit?: () => void;
+  onPressDelete?: () => void;
+  onPressPrincipal?: () => void;
 }
 
 export const CardAddress = ({
@@ -28,6 +31,8 @@ export const CardAddress = ({
 	state,
 	isPrincipal = false,
 	onPressEdit,
+  onPressDelete,
+  onPressPrincipal,
 }: CardAddressProps) => {
 	return (
 		<Container>
@@ -38,14 +43,14 @@ export const CardAddress = ({
 					<TitleRow>
 						<Title>{title}</Title>
 
-						<EditButton
-							onPress={onPressEdit}
-							accessibilityRole="button"
-							accessibilityLabel={`Editar endereço ${title}`}
-						>
-
-							<Trash size={27} color="#19344E" />
-						</EditButton>
+            <View style={{flexDirection: "row", alignItems: "center"}}>
+              {onPressEdit && <EditButton onPress={onPressEdit} accessibilityRole="button" accessibilityLabel={`Editar endereço ${title}`}>
+                <Pencil size={23} color="#19344E" />
+              </EditButton>}
+              {onPressDelete && <EditButton onPress={onPressDelete} accessibilityRole="button" accessibilityLabel={`Excluir endereço ${title}`}>
+                <Trash size={23} color="#C82909" />
+              </EditButton>}
+            </View>
 					</TitleRow>
 
 					<Description>{address}</Description>
@@ -54,11 +59,10 @@ export const CardAddress = ({
 						{city} • {state}
 					</Description>
 
-					{isPrincipal && (
-						<PrincipalBadge>
-							<PrincipalText>Principal</PrincipalText>
-						</PrincipalBadge>
-					)}
+          {isPrincipal && <PrincipalBadge><PrincipalText>Principal</PrincipalText></PrincipalBadge>}
+          {onPressPrincipal && <Pressable onPress={onPressPrincipal} accessibilityRole="button" style={{ paddingVertical: 12 }}>
+            <Text style={{color: "#19344E", textDecorationLine: "underline"}}>Definir como principal</Text>
+          </Pressable>}
 				</Content>
 			</Header>
 		</Container>

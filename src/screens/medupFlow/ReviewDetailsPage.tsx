@@ -8,7 +8,8 @@ import { HospitalMiniCard } from "../../components/medupFlow/HospitalMiniCard";
 import { StarRating } from "../../components/medupFlow/StarRating";
 import { BodyText, CaptionText, CardRow, SoftButton, SoftButtonText, Subheading, WhiteCard } from "../../components/medupFlow/style";
 import { useMedupDemo } from "../../features/medupDemo/DemoContext";
-import { getHospital, getHospitalWithReviews } from "../../features/medupDemo/data";
+import { getHospitalWithReviews } from "../../features/medupDemo/data";
+import { useHospitals } from "../../features/hospitals/HospitalsContext";
 import type { NavigationType } from "../../types/navigationType";
 import { DeleteReviewButton, DeleteReviewText, ReviewPhoto } from "./style";
 
@@ -18,6 +19,7 @@ export const ReviewDetailsPage = () => {
   const { params } = useRoute<RouteProp<NavigationType, "ReviewDetails">>();
   const navigation = useNavigation<Nav>();
   const { reviews, role, removeReview } = useMedupDemo();
+  const { findHospital } = useHospitals();
   const [confirming, setConfirming] = useState(false);
   const [photoFailed, setPhotoFailed] = useState(false);
   const review = reviews.find((item) => item.id === params.reviewId);
@@ -30,7 +32,9 @@ export const ReviewDetailsPage = () => {
     </ScreenLayout>
   );
 
-  const hospital = getHospitalWithReviews(getHospital(review.hospitalId), reviews);
+  const found = findHospital(review.hospitalId);
+  if (!found) return <ScreenLayout title="Detalhes da avaliação"><BodyText>Hospital não encontrado.</BodyText></ScreenLayout>;
+  const hospital = getHospitalWithReviews(found, reviews);
   const photo = review.photoUri ? { uri: review.photoUri } : review.photo;
   const confirmDelete = () => {
     if (!removeReview(review.id)) { setConfirming(false); return; }

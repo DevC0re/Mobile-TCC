@@ -6,10 +6,11 @@ import { Button } from "../../components/button";
 import { CardHospital } from "../../components/cardHospital";
 import { ScreenLayout } from "../../components/medupFlow/ScreenLayout";
 import { StarRating } from "../../components/medupFlow/StarRating";
-import { CardRow, SectionSpace, Subheading, WhiteCard } from "../../components/medupFlow/style";
-import { CRITERIA, getHospital, type Criterion, type RatingScores } from "../../features/medupDemo/data";
+import { BodyText, Subheading, WhiteCard } from "../../components/medupFlow/style";
+import { CRITERIA, type Criterion, type RatingScores } from "../../features/medupDemo/data";
 import type { NavigationType } from "../../types/navigationType";
 import { CriteriaRow } from "./style";
+import { useHospitals } from "../../features/hospitals/HospitalsContext";
 
 type Nav = NativeStackNavigationProp<NavigationType>;
 const emptyScores: RatingScores = { Atendimento: 0, Estrutura: 0, Limpeza: 0, Organização: 0 };
@@ -17,12 +18,14 @@ const emptyScores: RatingScores = { Atendimento: 0, Estrutura: 0, Limpeza: 0, Or
 export const HospitalRatingPage = () => {
   const { params } = useRoute<RouteProp<NavigationType, "HospitalRating">>();
   const navigation = useNavigation<Nav>();
-  const hospital = getHospital(params.hospitalId);
+  const { findHospital } = useHospitals();
+  const hospital = findHospital(params.hospitalId);
   const [overall, setOverall] = useState(0);
   const [scores, setScores] = useState<RatingScores>(emptyScores);
   const updateScore = (criterion: Criterion, value: number) =>
     setScores((previous) => ({ ...previous, [criterion]: value }));
 
+  if (!hospital) return <ScreenLayout title="Avaliar hospital"><BodyText>Hospital não encontrado.</BodyText></ScreenLayout>;
   const continueReview = () => {
     if (!overall || CRITERIA.some((criterion) => scores[criterion] === 0)) {
       Alert.alert("Avaliação incompleta", "Escolha uma nota geral e uma nota para cada critério.");
@@ -46,7 +49,7 @@ export const HospitalRatingPage = () => {
           </CriteriaRow>
         ))}
       </WhiteCard>
-      <Button title="Continuar" onPress={continueReview} />
+      <BodyText>A publicação de avaliações está indisponível até o back-end possuir uma rota de avaliações vinculadas a hospitais.</BodyText>
     </ScreenLayout>
   );
 };

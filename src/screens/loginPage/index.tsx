@@ -1,6 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { setItemAsync } from "expo-secure-store";
+import { useAuth } from "../../features/auth/AuthContext";
+import { getApiErrorMessage } from "../../services/apiError";
 import { useState } from "react";
 import { View } from "react-native";
 import { ButtonAuth } from "../../components/auth/authButton";
@@ -30,10 +31,7 @@ type NavigationProps = NativeStackNavigationProp<NavigationType, "Login">;
 export const LoginPage = () => {
 	const { isSmall, isTablet } = useBreakpoint();
 
-	const usertest = {
-		email: "test@gmail.com",
-		password: "123456",
-	};
+	const { signIn } = useAuth();
 	const navigation = useNavigation<NavigationProps>();
 
 	const handleGoRegistrePage = () => {
@@ -56,32 +54,26 @@ export const LoginPage = () => {
 	const [loading, setLoading] = useState(false);
 
 	const handleLogin = async () => {
-		setLoading(true);
+    if (loading) return;
+    setEformData("");
+    setError(false);
+    if (!formData.email.trim() || !formData.password.trim()) {
+      setEformData("Preencha e-mail e senha.");
+      setError(true);
+      return;
+    }
+    setLoading(true);
+    try {
+      await signIn(formData.email.trim().toLowerCase(), formData.password);
+      navigation.reset({ index: 0, routes: [{ name: "HomePage" }] });
+    } catch (error) {
+      setEformData(getApiErrorMessage(error, "Não foi possível entrar."));
+      setError(true);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-		if (!formData.email.trim() || !formData.password.trim()) {
-			setEformData("");
-			setError(false);
-
-			setEformData("Preencha todos os campos");
-			setError(true);
-		} else if (
-			formData.email != usertest.email ||
-			formData.password != usertest.password
-		) {
-			setEformData("");
-			setError(false);
-
-			setError(true);
-			setEformData("Email ou senha incorretos. Por favor, verifique");
-		} else if (
-			formData.email === usertest.email &&
-			formData.password === usertest.password
-		) {
-			setItemAsync("token", "true");
-			navigation.navigate("HomePage");
-		}
-		setLoading(false);
-	};
 	return (
 		<Main>
 			<Scroll>

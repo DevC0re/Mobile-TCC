@@ -1,4 +1,5 @@
 import { NavigationContainer } from "@react-navigation/native";
+import { useAuth } from "../features/auth/AuthContext";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
 import { VerificationPage } from "../screens/accountVerificationPage";
@@ -27,9 +28,11 @@ import { ReviewDetailsPage } from "../screens/medupFlow/ReviewDetailsPage";
 const Stack = createNativeStackNavigator<NavigationType>();
 
 export const Routes = () => {
+  const { user, initializing } = useAuth();
+  if (initializing) return null;
 	return (
 		<NavigationContainer>
-			<Stack.Navigator screenOptions={{ headerShown: false }}>
+			<Stack.Navigator initialRouteName={user ? "HomePage" : "Login"} screenOptions={{ headerShown: false }}>
 				<Stack.Screen name="Login" component={LoginPage} />
 
 				<Stack.Screen name="Register" component={RegisterPage} />

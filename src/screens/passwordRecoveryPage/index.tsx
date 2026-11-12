@@ -1,7 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { useState } from "react";
-import { View } from "react-native";
+import { Alert, View } from "react-native";
 import { ButtonAuth } from "../../components/auth/authButton";
 import { Headerauth } from "../../components/auth/authheader";
 import { Input } from "../../components/auth/authInput";
@@ -43,7 +43,7 @@ export const PasswordRecovery = () => {
 			setError(false);
 			setEmailError("");
 
-			navigation.navigate("VerifyAccount");
+			Alert.alert("Funcionalidade indisponível", "O back-end ainda não possui endpoint para redefinir a senha. A confirmação de conta é feita após o cadastro.");
 		}
 	};
 

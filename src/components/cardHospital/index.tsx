@@ -4,7 +4,7 @@ import { Heart, MapPin, Star } from "lucide-react-native";
 import { Pressable, type PressableProps } from "react-native";
 import { useBreakpoint } from "../../hooks/useBreakpoint";
 import { useMedupDemo } from "../../features/medupDemo/DemoContext";
-import { HOSPITALS, getHospitalWithReviews, type HospitalInfo } from "../../features/medupDemo/data";
+import { getHospitalWithReviews, type HospitalInfo } from "../../features/medupDemo/data";
 import type { NavigationType } from "../../types/navigationType";
 import { InfoTag } from "../infoTag";
 import {
@@ -24,7 +24,7 @@ interface HospitalProps {
   highestScore?: boolean;
   /** Largura controlada pelo carrossel; mantém o card dentro da área visível. */
   carouselWidth?: number;
-  hospital?: HospitalInfo;
+  hospital: HospitalInfo;
   /** Útil nas etapas de avaliação, onde o coração não precisa aparecer. */
   showFavorite?: boolean;
   onPress?: () => void;
@@ -35,7 +35,7 @@ type Nav = NativeStackNavigationProp<NavigationType>;
 export const CardHospital = ({
   highestScore = false,
   carouselWidth: providedCarouselWidth,
-  hospital = HOSPITALS[0],
+  hospital,
   showFavorite = true,
   onPress,
 }: HospitalProps) => {
@@ -104,7 +104,7 @@ export const CardHospital = ({
           <InfoTag label={statusText} variant={statusVariant} large={highestScore} />
           <InfoTag label={ownershipText} variant="info" large={highestScore} />
           <InfoTag
-            label={summary.rating.toFixed(1).replace(".", ",")}
+            label={summary.reviewCount ? summary.rating.toFixed(1).replace(".", ",") : "Sem avaliações"}
             icon={Star}
             variant="rating"
             large={highestScore}

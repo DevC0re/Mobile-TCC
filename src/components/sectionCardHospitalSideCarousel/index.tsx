@@ -2,13 +2,14 @@ import { useState } from "react";
 import { useWindowDimensions } from "react-native";
 import { CardHospital } from "../cardHospital";
 import { HorizontalScrollConteiner } from "./style";
-import { HOSPITALS } from "../../features/medupDemo/data";
+import { useHospitals } from "../../features/hospitals/HospitalsContext";
 
 const HORIZONTAL_PADDING = 14;
 const CARD_GAP = 16;
 const MAX_CARD_WIDTH = 440;
 
 export const SectionScrollhorizontal = () => {
+  const { hospitals } = useHospitals();
   const { width: screenWidth } = useWindowDimensions();
   const [viewportWidth, setViewportWidth] = useState(screenWidth);
 
@@ -33,7 +34,7 @@ export const SectionScrollhorizontal = () => {
         }
       }}
     >
-      {HOSPITALS.slice(0, 3).map((hospital) => (
+      {hospitals.slice(0, 3).map((hospital) => (
         <CardHospital
           key={hospital.id}
           hospital={hospital}

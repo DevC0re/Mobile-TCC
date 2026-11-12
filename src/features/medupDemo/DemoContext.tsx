@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useMemo, useState } from "react";
+import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { useAuth } from "../auth/AuthContext";
 import {
   SAMPLE_REVIEWS,
   type HospitalId,
@@ -6,7 +7,7 @@ import {
   type InsuranceId,
 } from "./data";
 
-import { removeDemoReview, resolveDemoRole, type DemoRole } from "./reviewModeration";
+import { removeDemoReview, type DemoRole } from "./reviewModeration";
 
 interface DemoContextValue {
   role: DemoRole;
@@ -23,14 +24,20 @@ interface DemoContextValue {
 const DemoContext = createContext<DemoContextValue | null>(null);
 
 export const DemoProvider = ({ children }: { children: React.ReactNode }) => {
-  // Dados de demonstração: substitua por dados retornados pela API quando integrada.
-  const [favorites, setFavorites] = useState<HospitalId[]>([
-    "santa-clara", "vita-saude", "sao-lucas", "bem-viver",
-  ]);
-  const [insurances, setInsurances] = useState<InsuranceId[]>(["bradesco"]);
+  // Favoritos e convênios ainda são locais: não existe endpoint por usuário no back-end.
+  const { user } = useAuth();
+  const [favorites, setFavorites] = useState<HospitalId[]>([]);
+  const [insurances, setInsurances] = useState<InsuranceId[]>([]);
   const [reviews, setReviews] = useState<HospitalReview[]>(SAMPLE_REVIEWS);
 
-  const role = resolveDemoRole(__DEV__, process.env.EXPO_PUBLIC_DEMO_ROLE);
+  const role: DemoRole = user?.role === "ADMIN" ? "ADMIN" : "USER";
+
+  // Não misturar escolhas de contas diferentes ao trocar de usuário.
+  useEffect(() => {
+    setFavorites([]);
+    setInsurances([]);
+    setReviews([]);
+  }, [user?.id]);
 
   const value = useMemo<DemoContextValue>(() => ({
     role,
